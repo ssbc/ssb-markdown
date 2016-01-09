@@ -1,0 +1,22 @@
+{
+  "name": "ssb-markdown",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dominictarr/ssb-markdown",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/ssb-markdown.git"
+  },
+  "dependencies": {
+    "emoji-named-characters": "^1.0.2",
+    "ssb-marked": "^0.5.4",
+    "ssb-msgs": "^5.2.0",
+    "ssb-ref": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "license": "MIT"
+}
