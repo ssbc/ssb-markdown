@@ -1,6 +1,6 @@
 {
   "name": "ssb-markdown",
-  "description": "",
+  "description": "patchwork's markdown parser",
   "version": "0.0.0",
   "homepage": "https://github.com/dominictarr/ssb-markdown",
   "repository": {
@@ -17,6 +17,6 @@
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
-  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "author": "Paul Frazee <pfrazee@gmail.com>",
   "license": "MIT"
 }
