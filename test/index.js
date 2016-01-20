@@ -125,18 +125,18 @@ var tape = require('tape')
 tests.forEach(function (e, i) {
   tape(e, function (t) {
     t.equal(
-      output[i].trim(),
       markdown.block(
         input[i].content.text,
         input[i].content.mentions
-      ).trim()
+      ).trim(),
+      output[i].trim()
     )
     t.end()
   })
   tape(e, function (t) {
     t.equal(
-      outputInline[i].trim(),
-      markdown.inline(input[i].content.text).trim()
+      markdown.inline(input[i].content.text).trim(),
+      outputInline[i].trim()
     )
     t.end()
   })
