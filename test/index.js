@@ -73,6 +73,20 @@ var input = [
     "channel": "patchwork-dev"
   },
   "signature": "3NSPu1MDxKTil1WqWWNcoD3f2IZlLpzy0kJY1UDf9EsOZ8IEsm1kC9kVzZCP3bxm1wmU66e0DSIneuGnlFNwAg==.sig.ed25519"
+},
+
+{
+  "previous": "%2Clc1DI+eGfyROos8lURqXmYiCGf9p1F+Xx2w+xFmfI=.sha256",
+  "author": "@vt8uK0++cpFioCCBeB3p3jdx4RIdQYJOL/imN1Hv0Wk=.ed25519",
+  "sequence": 238,
+  "timestamp": 1451738152178,
+  "hash": "sha256",
+  "content": {
+    "type": "post",
+    "text": "UI experiment: JSX-inspired es6 tagged template string function: [hyperx](https://github.com/substack/hyperx). Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.\n\nHere's the virtual-dom/main-loop example:\n\n``` js\nvar vdom = require('virtual-dom')\nvar hyperx = require('hyperx')\nvar hx = hyperx(vdom.h)\n\nvar main = require('main-loop')\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector('#content').appendChild(loop.target)\n\nfunction render (state) {\n  return hx`<div>\n    <h1>clicked ${state.times} times</h1>\n    <button onclick=${onclick}>click me!</button>\n  </div>`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n```",
+    "channel": "modules"
+  },
+  "signature": "GgS7QYd8iG1sXIGqyODUqvL6WenVrY8C5GUBf/xzVXrmZJBfHGfBglopJslFVsY7mQ4EA8Y4qh0haGS3xMjSCA==.sig.ed25519"
 }
 
 ]
@@ -81,14 +95,16 @@ var output = [
 '<p>i was hoping this would be <a href="https://github.com/breach" target="_blank">ultrabrowser</a> but it hasn&#39;t turned out that great.  But image a good base would look something like <a href="http://surf.suckless.org/" target="_blank">Surf</a></p>',
 '<p>At Pidgon River nature preserve in Indiana<br><a href="#/webview/%26RRELXJAxum631eq1ikj7%2Bqngd3f6Dvz7eA1mZNHBPQ0%3D.sha256"><img src="http://localhost:7777/&RRELXJAxum631eq1ikj7+qngd3f6Dvz7eA1mZNHBPQ0=.sha256?fallback=img" alt="IMG_20160107_170558 (1).jpg"></a></p>',
 '<p><a href="#/profile/%40hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE%3D.ed25519">@paul</a> <a href="#/profile/%40ye%2BQM09iPcDJD6YvQYjoQc7sLF%2FIFhmNbEqgdzQo3lQ%3D.ed25519">@mixmix</a> in the latest version there isn&#39;t anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn&#39;t realize who else is on that thread.</p>',
-'<p>If somebody&#39;s looking for a UI task to hack on, the <a href="https://github.com/ssbc/patchwork/issues/218" target="_blank">Expand threads in-place</a> is a moderate-sized item that I&#39;d love to get in. I&#39;m going to work on the social and onboarding bits now, so I won&#39;t be able to get to it for a bit.</p>\n<p>There will be <img src="./img/emoji/cake.png" alt=":cake:" title=":cake:" class="emoji" align="absmiddle" height="16" width="16"> and <img src="./img/emoji/cookie.png" alt=":cookie:" title=":cookie:" class="emoji" align="absmiddle" height="16" width="16">s and <img src="./img/emoji/heart.png" alt=":heart:" title=":heart:" class="emoji" align="absmiddle" height="16" width="16">s as a reward</p>'
+'<p>If somebody&#39;s looking for a UI task to hack on, the <a href="https://github.com/ssbc/patchwork/issues/218" target="_blank">Expand threads in-place</a> is a moderate-sized item that I&#39;d love to get in. I&#39;m going to work on the social and onboarding bits now, so I won&#39;t be able to get to it for a bit.</p>\n<p>There will be <img src="./img/emoji/cake.png" alt=":cake:" title=":cake:" class="emoji" align="absmiddle" height="16" width="16"> and <img src="./img/emoji/cookie.png" alt=":cookie:" title=":cookie:" class="emoji" align="absmiddle" height="16" width="16">s and <img src="./img/emoji/heart.png" alt=":heart:" title=":heart:" class="emoji" align="absmiddle" height="16" width="16">s as a reward</p>',
+'<p>UI experiment: JSX-inspired es6 tagged template string function: <a href="https://github.com/substack/hyperx" target="_blank">hyperx</a>. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.</p>\n<p>Here&#39;s the virtual-dom/main-loop example:</p>\n<pre><code class="lang-js">var vdom = require(&#39;virtual-dom&#39;)\nvar hyperx = require(&#39;hyperx&#39;)\nvar hx = hyperx(vdom.h)\n\nvar main = require(&#39;main-loop&#39;)\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector(&#39;#content&#39;).appendChild(loop.target)\n\nfunction render (state) {\n  return hx`&lt;div&gt;\n    &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;\n    &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;\n  &lt;/div&gt;`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n</code></pre>'
 ]
 
 var outputInline = [
 "i was hoping this would be ultrabrowser but it hasn't turned out that great.  But image a good base would look something like Surf ",
 "At Pidgon River nature preserve in Indiana IMG_20160107_170558 (1).jpg ",
 "@paul @mixmix in the latest version there isn't anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn't realize who else is on that thread. ",
-"If somebody's looking for a UI task to hack on, the Expand threads in-place is a moderate-sized item that I'd love to get in. I'm going to work on the social and onboarding bits now, so I won't be able to get to it for a bit. There will be <img src=\"./img/emoji/cake.png\" alt=\":cake:\" title=\":cake:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\"> and <img src=\"./img/emoji/cookie.png\" alt=\":cookie:\" title=\":cookie:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s and <img src=\"./img/emoji/heart.png\" alt=\":heart:\" title=\":heart:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s as a reward "
+"If somebody's looking for a UI task to hack on, the Expand threads in-place is a moderate-sized item that I'd love to get in. I'm going to work on the social and onboarding bits now, so I won't be able to get to it for a bit. There will be <img src=\"./img/emoji/cake.png\" alt=\":cake:\" title=\":cake:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\"> and <img src=\"./img/emoji/cookie.png\" alt=\":cookie:\" title=\":cookie:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s and <img src=\"./img/emoji/heart.png\" alt=\":heart:\" title=\":heart:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s as a reward ",
+"UI experiment: JSX-inspired es6 tagged template string function: hyperx. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler. Here's the virtual-dom/main-loop example: var vdom = require('virtual-dom') var hyperx = require('hyperx') var hx = hyperx(vdom.h) var main = require('main-loop') var loop = main({ times: 0 }, render, vdom) document.querySelector('#content').appendChild(loop.target) function render (state) {   return hx`&lt;div&gt;     &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;     &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;   &lt;/div&gt;`   function onclick () {     loop.update({ times: state.times + 1 })   } } "
 ]
 
 
@@ -98,7 +114,8 @@ var tests = [
   'message with link',
   'message with image',
   'message with "@" mentions',
-  'message with emoji'
+  'message with emoji',
+  'message with inline html in code block'
 ]
 
 var tape = require('tape')
