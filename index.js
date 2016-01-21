@@ -13,37 +13,45 @@ blockRenderer.urltransform = function (url) {
   var hasSigil = (c == '@' || c == '&' || c == '%')
 
   if (this.options.sanitize && !hasSigil) {
+    // sanitize - only allow ssb refs or http/s links
     try {
-      var prot = decodeURIComponent(unescape(url))
-        .replace(/[^\w:]/g, '')
-        .toLowerCase();
+      var prot = decodeURIComponent(unescape(url.replace(/[^\w:]/g, ''))).toLowerCase();
     } catch (e) {
       return false;
     }
-    if (prot.indexOf('javascript:') === 0) {
+    if (prot.indexOf('http:') !== 0 && prot.indexOf('https:') !== 0 && prot.indexOf('data:') !== 0) {
       return false;
     }
   }
 
-  var islink = ssbref.isLink(url)
-  if (hasSigil && !islink && this.options.mentionNames) {
-    // do a name lookup
+  // is this an ssb ref, or perhaps a ref within an HTTP url?
+  var isSsbRef = ssbref.isLink(url)
+  if (!isSsbRef) {
+    // check if there's a ref inside somewhere
+    var ref = ssbref.extract(url)
+    if (ref) {
+      url = ref
+      isSsbRef = true
+    }
+  }
+
+  // is this an @username mention?
+  if (hasSigil && !isSsbRef && this.options.mentionNames) {
+    // try a name lookup
     url = this.options.mentionNames[url.slice(1)]
     if (!url)
       return false
-    islink = true
+    isSsbRef = true
   }
 
-  if (islink) {
+  // use our own link if this is an ssb ref
+  if (isSsbRef) {
     if (ssbref.isFeedId(url))
       return '#/profile/'+encodeURIComponent(url)
     else if (ssbref.isMsgId(url))
       return '#/msg/'+encodeURIComponent(url)
     else if (ssbref.isBlobId(url))
-      return '#/webview/'+encodeURIComponent(url)
-  }
-  else if (url.indexOf('http') !== 0) {
-    return false;
+      return '/'+encodeURIComponent(url)
   }
   return url
 }
@@ -53,7 +61,7 @@ blockRenderer.link = function(href, title, text) {
   href = this.urltransform(href)
   var out
   if (href !== false) {
-    if (href.indexOf('#/webview/') === 0 && (title || text)) // add ?name param if this is a link to a blob
+    if ((href.indexOf('/%26') === 0 || href.indexOf('/&') === 0) && (title || text)) // add ?name param if this is a link to a blob
       href += '?name='+encodeURIComponent(title || text)
     out = '<a href="' + href + '"';
   } else
@@ -73,11 +81,11 @@ blockRenderer.link = function(href, title, text) {
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
   if (ssbref.isLink(href)) {
-    var out = '<a href="#/webview/' + encodeURIComponent(href) + '"><img src="http://localhost:7777/' + href + '?fallback=img" alt="' + text + '"'
+    var out = '<img src="http://localhost:7777/' + href + '?fallback=img" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'
     }
-    out += '></a>'
+    out += '>'
     return out
   }
   return text
@@ -87,7 +95,7 @@ blockRenderer.image  = function (href, title, text) {
 inlineRenderer.urltransform = function (url) { return false }
 inlineRenderer.link = function (href, title, text) { return unquote(text) }
 inlineRenderer.image  = function (href, title, text) { return unquote(text) }
-inlineRenderer.code = function(code, lang, escaped) { return escaped ? code : quote(code) }
+inlineRenderer.code = function(code, lang, escaped) { return escaped ? code : escape(code) }
 inlineRenderer.blockquote = function(quote) { return unquote(quote) }
 inlineRenderer.html = function(html) { return false }
 inlineRenderer.heading = function(text, level, raw) { return '<strong>'+unquote(text)+'</strong> ' }
@@ -107,7 +115,7 @@ inlineRenderer.mention = function(preceding, id) { return unquote((preceding||''
 function unquote (text) {
   return text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, '\'')
 }
-function quote (text) {
+function escape (text) {
   return text
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
