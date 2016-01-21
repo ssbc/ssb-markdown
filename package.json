@@ -2,10 +2,10 @@
   "name": "ssb-markdown",
   "description": "patchwork's markdown parser",
   "version": "1.0.0",
-  "homepage": "https://github.com/dominictarr/ssb-markdown",
+  "homepage": "https://github.com/ssbc/ssb-markdown",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dominictarr/ssb-markdown.git"
+    "url": "git://github.com/ssbc/ssb-markdown.git"
   },
   "dependencies": {
     "emoji-named-characters": "^1.0.2",
@@ -13,7 +13,9 @@
     "ssb-msgs": "^5.2.0",
     "ssb-ref": "^2.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tape": "^4.4.0"
+  },
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
   },

@@ -87,7 +87,7 @@ blockRenderer.image  = function (href, title, text) {
 inlineRenderer.urltransform = function (url) { return false }
 inlineRenderer.link = function (href, title, text) { return unquote(text) }
 inlineRenderer.image  = function (href, title, text) { return unquote(text) }
-inlineRenderer.code = function(code, lang, escaped) { return unquote(code) }
+inlineRenderer.code = function(code, lang, escaped) { return escaped ? code : quote(code) }
 inlineRenderer.blockquote = function(quote) { return unquote(quote) }
 inlineRenderer.html = function(html) { return false }
 inlineRenderer.heading = function(text, level, raw) { return '<strong>'+unquote(text)+'</strong> ' }
@@ -106,6 +106,14 @@ inlineRenderer.del = function(text) { return unquote(text) }
 inlineRenderer.mention = function(preceding, id) { return unquote((preceding||'') + id) }
 function unquote (text) {
   return text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, '\'')
+}
+function quote (text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/\n+/g, ' ')
 }
 
 marked.setOptions({
