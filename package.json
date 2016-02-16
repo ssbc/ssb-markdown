@@ -1,7 +1,7 @@
 {
   "name": "ssb-markdown",
   "description": "patchwork's markdown parser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/ssbc/ssb-markdown",
   "repository": {
     "type": "git",
