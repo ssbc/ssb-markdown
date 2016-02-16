@@ -81,11 +81,12 @@ blockRenderer.link = function(href, title, text) {
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
   if (ssbref.isLink(href)) {
-    var out = '<img src="http://localhost:7777/' + href + '?fallback=img" alt="' + text + '"'
+    var url = '/' + href + '?fallback=img'
+    var out = '<a href="'+url+'" target="_blank"><img src="'+url+'" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'
     }
-    out += '>'
+    out += '></a>'
     return out
   }
   return text
