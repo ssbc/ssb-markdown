@@ -45,13 +45,8 @@ blockRenderer.urltransform = function (url) {
   }
 
   // use our own link if this is an ssb ref
-  if (isSsbRef) {
-    if (ssbref.isFeedId(url))
-      return '#/profile/'+encodeURIComponent(url)
-    else if (ssbref.isMsgId(url))
-      return '#/msg/'+encodeURIComponent(url)
-    else if (ssbref.isBlobId(url))
-      return '/'+encodeURIComponent(url)
+  if (isSsbRef && this.options.ssbRefToUrl) {
+    return this.options.ssbRefToUrl(url)
   }
   return url
 }
@@ -80,13 +75,13 @@ blockRenderer.link = function(href, title, text) {
 
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
-  if (ssbref.isLink(href)) {
-    var url = '/' + href + '?fallback=img'
-    var out = '<a href="'+url+'" target="_blank"><img src="'+url+'" alt="' + text + '"'
+  if (ssbref.isLink(href) && this.options.ssbRefToUrl) {
+    var url = this.options.ssbRefToUrl(href)
+    var out = '<img src="'+url+'" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'
     }
-    out += '></a>'
+    out += '>'
     return out
   }
   return text
@@ -141,21 +136,22 @@ marked.setOptions({
   renderer: blockRenderer
 })
 
-exports.block = function(text, mentionNames) {
-  if (mentionNames && mentionNames.key && mentionNames.value) {
+exports.block = function(text, opts) {
+  opts = opts || {}
+  if (opts.mentionNames && opts.mentionNames.key && opts.mentionNames.value) {
     // is a message, get the mentions links
-    mentionNames = mlib.links(mentionNames.value.content.mentions, 'feed')
+    opts.mentionNames = mlib.links(opts.mentionNames.value.content.mentions, 'feed')
   }
-  if (Array.isArray(mentionNames)) {
+  if (Array.isArray(opts.mentionNames)) {
     // is an array of links, turn into an object map
-    var n = {}
-    mentionNames.forEach(function (link) {
-      n[link.name] = link.link
+    var obj = {}
+    opts.mentionNames.forEach(function (link) {
+      obj[link.name] = link.link
     })
-    mentionNames = n
+    opts.mentionNames = obj
   }
 
-  return marked(''+(text||''), { mentionNames: mentionNames })
+  return marked(''+(text||''), opts)
 }
 
 exports.inline = function(text) {

@@ -93,7 +93,7 @@ var input = [
 
 var output = [
 '<p>i was hoping this would be <a href="https://github.com/breach" target="_blank">ultrabrowser</a> but it hasn&#39;t turned out that great.  But image a good base would look something like <a href="http://surf.suckless.org/" target="_blank">Surf</a></p>',
-'<p>At Pidgon River nature preserve in Indiana<br><a href="/&RRELXJAxum631eq1ikj7+qngd3f6Dvz7eA1mZNHBPQ0=.sha256?fallback=img" target="_blank"><img src="/&RRELXJAxum631eq1ikj7+qngd3f6Dvz7eA1mZNHBPQ0=.sha256?fallback=img" alt="IMG_20160107_170558 (1).jpg"></a></p>',
+'<p>At Pidgon River nature preserve in Indiana<br><img src="/%26RRELXJAxum631eq1ikj7%2Bqngd3f6Dvz7eA1mZNHBPQ0%3D.sha256" alt="IMG_20160107_170558 (1).jpg"></p>',
 '<p><a href="#/profile/%40hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE%3D.ed25519">@paul</a> <a href="#/profile/%40ye%2BQM09iPcDJD6YvQYjoQc7sLF%2FIFhmNbEqgdzQo3lQ%3D.ed25519">@mixmix</a> in the latest version there isn&#39;t anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn&#39;t realize who else is on that thread.</p>',
 '<p>If somebody&#39;s looking for a UI task to hack on, the <a href="https://github.com/ssbc/patchwork/issues/218" target="_blank">Expand threads in-place</a> is a moderate-sized item that I&#39;d love to get in. I&#39;m going to work on the social and onboarding bits now, so I won&#39;t be able to get to it for a bit.</p>\n<p>There will be <img src="./img/emoji/cake.png" alt=":cake:" title=":cake:" class="emoji" align="absmiddle" height="16" width="16"> and <img src="./img/emoji/cookie.png" alt=":cookie:" title=":cookie:" class="emoji" align="absmiddle" height="16" width="16">s and <img src="./img/emoji/heart.png" alt=":heart:" title=":heart:" class="emoji" align="absmiddle" height="16" width="16">s as a reward</p>',
 '<p>UI experiment: JSX-inspired es6 tagged template string function: <a href="https://github.com/substack/hyperx" target="_blank">hyperx</a>. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.</p>\n<p>Here&#39;s the virtual-dom/main-loop example:</p>\n<pre><code class="lang-js">var vdom = require(&#39;virtual-dom&#39;)\nvar hyperx = require(&#39;hyperx&#39;)\nvar hx = hyperx(vdom.h)\n\nvar main = require(&#39;main-loop&#39;)\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector(&#39;#content&#39;).appendChild(loop.target)\n\nfunction render (state) {\n  return hx`&lt;div&gt;\n    &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;\n    &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;\n  &lt;/div&gt;`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n</code></pre>'
@@ -119,6 +119,17 @@ var tests = [
 ]
 
 var tape = require('tape')
+var ssbref = require('ssb-ref')
+
+function ssbRefToUrl (ref) {
+  if (ssbref.isFeedId(ref))
+    return '#/profile/'+encodeURIComponent(ref)
+  else if (ssbref.isMsgId(ref))
+    return '#/msg/'+encodeURIComponent(ref)
+  else if (ssbref.isBlobId(ref))
+    return '/'+encodeURIComponent(ref)
+  return ''
+}
 
 //run tests over input and output for current defaults.
 
@@ -127,7 +138,7 @@ tests.forEach(function (e, i) {
     t.equal(
       markdown.block(
         input[i].content.text,
-        input[i].content.mentions
+        { ssbRefToUrl: ssbRefToUrl, mentionNames: input[i].content.mentions }
       ).trim(),
       output[i].trim()
     )
@@ -135,7 +146,7 @@ tests.forEach(function (e, i) {
   })
   tape(e, function (t) {
     t.equal(
-      markdown.inline(input[i].content.text).trim(),
+      markdown.inline(input[i].content.text, { ssbRefToUrl: ssbRefToUrl }).trim(),
       outputInline[i].trim()
     )
     t.end()
