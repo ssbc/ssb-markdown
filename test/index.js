@@ -120,25 +120,40 @@ var tests = [
 
 var tape = require('tape')
 var ssbref = require('ssb-ref')
+var mlib = require('ssb-msgs')
 
-function ssbRefToUrl (ref) {
-  if (ssbref.isFeedId(ref))
-    return '#/profile/'+encodeURIComponent(ref)
-  else if (ssbref.isMsgId(ref))
-    return '#/msg/'+encodeURIComponent(ref)
-  else if (ssbref.isBlobId(ref))
-    return '/'+encodeURIComponent(ref)
-  return ''
-}
 
 //run tests over input and output for current defaults.
 
 tests.forEach(function (e, i) {
   tape(e, function (t) {
+    // extract mention names
+    var mentionNames = {}
+    mlib.links(input[i].content.mentions, 'feed').forEach(function (link) {
+      if (link.name && typeof link.name == 'string') {
+        var name = (link.name.charAt(0) == '@') ? link.name : '@'+link.name
+        mentionNames[name] = link.link
+      }
+    })
+    var toUrl = function (ref) {
+      // @-mentions
+      if (ref in mentionNames)
+        return '#/profile/'+encodeURIComponent(mentionNames[ref])
+
+      // standard ssb-refs
+      if (ssbref.isFeedId(ref))
+        return '#/profile/'+encodeURIComponent(ref)
+      else if (ssbref.isMsgId(ref))
+        return '#/msg/'+encodeURIComponent(ref)
+      else if (ssbref.isBlobId(ref))
+        return '/'+encodeURIComponent(ref)
+      return ''
+    }
+
     t.equal(
       markdown.block(
         input[i].content.text,
-        { ssbRefToUrl: ssbRefToUrl, mentionNames: input[i].content.mentions }
+        { toUrl: toUrl }
       ).trim(),
       output[i].trim()
     )
@@ -146,7 +161,7 @@ tests.forEach(function (e, i) {
   })
   tape(e, function (t) {
     t.equal(
-      markdown.inline(input[i].content.text, { ssbRefToUrl: ssbRefToUrl }).trim(),
+      markdown.inline(input[i].content.text).trim(),
       outputInline[i].trim()
     )
     t.end()

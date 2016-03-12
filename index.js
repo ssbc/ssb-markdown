@@ -35,18 +35,9 @@ blockRenderer.urltransform = function (url) {
     }
   }
 
-  // is this an @username mention?
-  if (hasSigil && !isSsbRef && this.options.mentionNames) {
-    // try a name lookup
-    url = this.options.mentionNames[url.slice(1)]
-    if (!url)
-      return false
-    isSsbRef = true
-  }
-
   // use our own link if this is an ssb ref
-  if (isSsbRef && this.options.ssbRefToUrl) {
-    return this.options.ssbRefToUrl(url)
+  if ((hasSigil || isSsbRef) && this.options.toUrl) {
+    return this.options.toUrl(url)
   }
   return url
 }
@@ -75,8 +66,8 @@ blockRenderer.link = function(href, title, text) {
 
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
-  if (ssbref.isLink(href) && this.options.ssbRefToUrl) {
-    var url = this.options.ssbRefToUrl(href)
+  if (ssbref.isLink(href) && this.options.toUrl) {
+    var url = this.options.toUrl(href)
     var out = '<img src="'+url+'" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'
@@ -137,20 +128,6 @@ marked.setOptions({
 })
 
 exports.block = function(text, opts) {
-  opts = opts || {}
-  if (opts.mentionNames && opts.mentionNames.key && opts.mentionNames.value) {
-    // is a message, get the mentions links
-    opts.mentionNames = mlib.links(opts.mentionNames.value.content.mentions, 'feed')
-  }
-  if (Array.isArray(opts.mentionNames)) {
-    // is an array of links, turn into an object map
-    var obj = {}
-    opts.mentionNames.forEach(function (link) {
-      obj[link.name] = link.link
-    })
-    opts.mentionNames = obj
-  }
-
   return marked(''+(text||''), opts)
 }
 
