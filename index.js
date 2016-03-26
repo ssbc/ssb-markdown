@@ -35,23 +35,9 @@ blockRenderer.urltransform = function (url) {
     }
   }
 
-  // is this an @username mention?
-  if (hasSigil && !isSsbRef && this.options.mentionNames) {
-    // try a name lookup
-    url = this.options.mentionNames[url.slice(1)]
-    if (!url)
-      return false
-    isSsbRef = true
-  }
-
   // use our own link if this is an ssb ref
-  if (isSsbRef) {
-    if (ssbref.isFeedId(url))
-      return '#/profile/'+encodeURIComponent(url)
-    else if (ssbref.isMsgId(url))
-      return '#/msg/'+encodeURIComponent(url)
-    else if (ssbref.isBlobId(url))
-      return '/'+encodeURIComponent(url)
+  if ((hasSigil || isSsbRef) && this.options.toUrl) {
+    return this.options.toUrl(url)
   }
   return url
 }
@@ -80,13 +66,13 @@ blockRenderer.link = function(href, title, text) {
 
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
-  if (ssbref.isLink(href)) {
-    var url = '/' + href + '?fallback=img'
-    var out = '<a href="'+url+'" target="_blank"><img src="'+url+'" alt="' + text + '"'
+  if (ssbref.isLink(href) && this.options.toUrl) {
+    var url = this.options.toUrl(href)
+    var out = '<img src="'+url+'" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'
     }
-    out += '></a>'
+    out += '>'
     return out
   }
   return text
@@ -141,21 +127,8 @@ marked.setOptions({
   renderer: blockRenderer
 })
 
-exports.block = function(text, mentionNames) {
-  if (mentionNames && mentionNames.key && mentionNames.value) {
-    // is a message, get the mentions links
-    mentionNames = mlib.links(mentionNames.value.content.mentions, 'feed')
-  }
-  if (Array.isArray(mentionNames)) {
-    // is an array of links, turn into an object map
-    var n = {}
-    mentionNames.forEach(function (link) {
-      n[link.name] = link.link
-    })
-    mentionNames = n
-  }
-
-  return marked(''+(text||''), { mentionNames: mentionNames })
+exports.block = function(text, opts) {
+  return marked(''+(text||''), opts)
 }
 
 exports.inline = function(text) {

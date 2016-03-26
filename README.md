@@ -15,13 +15,13 @@ standard markdown.
 var md = require('ssb-markdown')
 ```
 
-### md.block(source, mentions)
+### md.block(source, { toUrl: })
 
 Render raw markdown `source` to html.
 The output will be html content without a surrounding tag.
-`mentions` is an array of [ssb-links](https://github.com/ssbc/ssb-links)
-If a `@NAME` matches a mention link to `{name: NAME, link: @PUBKEY }`
-then that mention will be rendered as a link to `@PUBKEY`.
+
+`toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string,
+and returns a url string.
 
 ### md.inline (source)
 
