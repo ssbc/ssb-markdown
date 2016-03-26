@@ -24,18 +24,8 @@ blockRenderer.urltransform = function (url) {
     }
   }
 
-  // is this an ssb ref, or perhaps a ref within an HTTP url?
-  var isSsbRef = ssbref.isLink(url)
-  if (!isSsbRef) {
-    // check if there's a ref inside somewhere
-    var ref = ssbref.extract(url)
-    if (ref) {
-      url = ref
-      isSsbRef = true
-    }
-  }
-
   // use our own link if this is an ssb ref
+  var isSsbRef = ssbref.isLink(url)
   if ((hasSigil || isSsbRef) && this.options.toUrl) {
     return this.options.toUrl(url)
   }
