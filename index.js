@@ -27,7 +27,7 @@ blockRenderer.urltransform = function (url) {
   // use our own link if this is an ssb ref
   var isSsbRef = ssbref.isLink(url)
   if ((hasSigil || isSsbRef) && this.options.toUrl) {
-    return this.options.toUrl(url)
+    return this.options.toUrl(url, false)
   }
   return url
 }
@@ -57,7 +57,7 @@ blockRenderer.link = function(href, title, text) {
 blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
   if (ssbref.isLink(href) && this.options.toUrl) {
-    var url = this.options.toUrl(href)
+    var url = this.options.toUrl(href, true)
     var out = '<img src="'+url+'" alt="' + text + '"'
     if (title) {
       out += ' title="' + title + '"'

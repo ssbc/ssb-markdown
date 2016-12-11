@@ -135,7 +135,7 @@ tests.forEach(function (e, i) {
         mentionNames[name] = link.link
       }
     })
-    var toUrl = function (ref) {
+    var toUrl = function (ref, isImage) {
       // @-mentions
       if (ref in mentionNames)
         return '#/profile/'+encodeURIComponent(mentionNames[ref])

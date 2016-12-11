@@ -20,7 +20,7 @@ var md = require('ssb-markdown')
 Render raw markdown `source` to html.
 The output will be html content without a surrounding tag.
 
-`toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string,
+`toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string, and whether it is for an image or not,
 and returns a url string.
 
 ### md.inline (source)
