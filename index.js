@@ -58,12 +58,14 @@ blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
   if (ssbref.isLink(href) && this.options.toUrl) {
     var url = this.options.toUrl(href, true)
-    var out = '<img src="'+url+'" alt="' + text + '"'
-    if (title) {
-      out += ' title="' + title + '"'
-    }
-    out += '>'
-    return out
+    var hrefAttr = this.options.imageLink
+      ? ' href="' + this.options.imageLink(href) + '"'
+      : ''
+    var titleAttr = title
+      ? ' title="' + title + '"'
+      : ''
+
+    return '<a' + hrefAttr + '><img src="'+url+'" alt="' + text + '"' + titleAttr + '></a>'
   }
   return text
 }
