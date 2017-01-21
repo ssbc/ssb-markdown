@@ -20,5 +20,10 @@
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
+  "maintainers": [
+    "pfraze",
+    "dominictarr",
+    "mixmix"
+  ],
   "license": "MIT"
 }
