@@ -10,7 +10,7 @@ var inlineRenderer = new marked.Renderer()
 // override to only allow external links or hashes, and correctly link to ssb objects
 blockRenderer.urltransform = function (url) {
   var c = url.charAt(0)
-  var hasSigil = (c == '@' || c == '&' || c == '%' || c == '#')
+  var hasSigil = (c == '@' || c == '&' || c == '%' || c == '#' || c == '?')
 
   if (this.options.sanitize && !hasSigil) {
     // sanitize - only allow ssb refs or http/s links
