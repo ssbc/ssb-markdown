@@ -10,7 +10,7 @@ var inlineRenderer = new marked.Renderer()
 // override to only allow external links or hashes, and correctly link to ssb objects
 blockRenderer.urltransform = function (url) {
   var c = url.charAt(0)
-  var hasSigil = (c == '@' || c == '&' || c == '%' || c == '#')
+  var hasSigil = (c === '@' || c === '&' || c === '%' || c === '#')
 
   if (this.options.sanitize && !hasSigil) {
     // sanitize - only allow ssb refs or http/s links
@@ -91,6 +91,7 @@ inlineRenderer.em = function(text) { return unquote(text) }
 inlineRenderer.codespan = function(text) { return unquote(text) }
 inlineRenderer.del = function(text) { return unquote(text) }
 inlineRenderer.mention = function(preceding, id) { return shortenIfLink(unquote((preceding||'') + id)) }
+inlineRenderer.hashtag = function(preceding, tag) { return unquote((preceding||'') + tag) }
 function unquote (text) {
   return text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, '\'')
 }
@@ -145,4 +146,6 @@ function renderEmoji (size) {
       : ':' + emoji + ':'
     }
 }
+
+
 
