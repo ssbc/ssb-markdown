@@ -87,6 +87,21 @@ var input = [
     "channel": "modules"
   },
   "signature": "GgS7QYd8iG1sXIGqyODUqvL6WenVrY8C5GUBf/xzVXrmZJBfHGfBglopJslFVsY7mQ4EA8Y4qh0haGS3xMjSCA==.sig.ed25519"
+},
+
+{
+  "previous": "%bqmIrUnMn8YY7f34wfqgTbOLoBdrMlXcz4ZS0NTnT2w=.sha256",
+  "author": "@a0nzjJG3fyWm+o2Z7vFQvGrgSdlbpX92nx/6DgbmP4Y=.ed25519",
+  "sequence": "37",
+  "timestamp": 1489919632767,
+  "hash": "sha256",
+  "content": {
+    "type": "post",
+    "channel": "patchwork",
+    "text": "#feedback\nI'm finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn't visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. ",
+    "mentions": []
+  },
+  "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
 }
 
 ]
@@ -96,7 +111,8 @@ var output = [
 '<p>At Pidgon River nature preserve in Indiana<br><img src="/%26RRELXJAxum631eq1ikj7%2Bqngd3f6Dvz7eA1mZNHBPQ0%3D.sha256" alt="IMG_20160107_170558 (1).jpg"></p>',
 '<p><a href="#/profile/%40hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE%3D.ed25519">@paul</a> <a href="#/profile/%40ye%2BQM09iPcDJD6YvQYjoQc7sLF%2FIFhmNbEqgdzQo3lQ%3D.ed25519">@mixmix</a> in the latest version there isn&#39;t anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn&#39;t realize who else is on that thread.</p>',
 '<p>If somebody&#39;s looking for a UI task to hack on, the <a href="https://github.com/ssbc/patchwork/issues/218" target="_blank">Expand threads in-place</a> is a moderate-sized item that I&#39;d love to get in. I&#39;m going to work on the social and onboarding bits now, so I won&#39;t be able to get to it for a bit.</p>\n<p>There will be <img src="./img/emoji/cake.png" alt=":cake:" title=":cake:" class="emoji" align="absmiddle" height="16" width="16"> and <img src="./img/emoji/cookie.png" alt=":cookie:" title=":cookie:" class="emoji" align="absmiddle" height="16" width="16">s and <img src="./img/emoji/heart.png" alt=":heart:" title=":heart:" class="emoji" align="absmiddle" height="16" width="16">s as a reward</p>',
-'<p>UI experiment: JSX-inspired es6 tagged template string function: <a href="https://github.com/substack/hyperx" target="_blank">hyperx</a>. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.</p>\n<p>Here&#39;s the virtual-dom/main-loop example:</p>\n<pre><code class="lang-js">var vdom = require(&#39;virtual-dom&#39;)\nvar hyperx = require(&#39;hyperx&#39;)\nvar hx = hyperx(vdom.h)\n\nvar main = require(&#39;main-loop&#39;)\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector(&#39;#content&#39;).appendChild(loop.target)\n\nfunction render (state) {\n  return hx`&lt;div&gt;\n    &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;\n    &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;\n  &lt;/div&gt;`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n</code></pre>'
+'<p>UI experiment: JSX-inspired es6 tagged template string function: <a href="https://github.com/substack/hyperx" target="_blank">hyperx</a>. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.</p>\n<p>Here&#39;s the virtual-dom/main-loop example:</p>\n<pre><code class="lang-js">var vdom = require(&#39;virtual-dom&#39;)\nvar hyperx = require(&#39;hyperx&#39;)\nvar hx = hyperx(vdom.h)\n\nvar main = require(&#39;main-loop&#39;)\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector(&#39;#content&#39;).appendChild(loop.target)\n\nfunction render (state) {\n  return hx`&lt;div&gt;\n    &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;\n    &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;\n  &lt;/div&gt;`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n</code></pre>',
+'<p><a href="#/channel/feedback">#feedback</a><br>I&#39;m finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn&#39;t visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. </p>'
 ]
 
 var outputInline = [
@@ -104,7 +120,8 @@ var outputInline = [
 "At Pidgon River nature preserve in Indiana IMG_20160107_170558 (1).jpg ",
 "@paul @mixmix in the latest version there isn't anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn't realize who else is on that thread. ",
 "If somebody's looking for a UI task to hack on, the Expand threads in-place is a moderate-sized item that I'd love to get in. I'm going to work on the social and onboarding bits now, so I won't be able to get to it for a bit. There will be <img src=\"./img/emoji/cake.png\" alt=\":cake:\" title=\":cake:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\"> and <img src=\"./img/emoji/cookie.png\" alt=\":cookie:\" title=\":cookie:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s and <img src=\"./img/emoji/heart.png\" alt=\":heart:\" title=\":heart:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s as a reward ",
-"UI experiment: JSX-inspired es6 tagged template string function: hyperx. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler. Here's the virtual-dom/main-loop example: var vdom = require('virtual-dom') var hyperx = require('hyperx') var hx = hyperx(vdom.h) var main = require('main-loop') var loop = main({ times: 0 }, render, vdom) document.querySelector('#content').appendChild(loop.target) function render (state) {   return hx`&lt;div&gt;     &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;     &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;   &lt;/div&gt;`   function onclick () {     loop.update({ times: state.times + 1 })   } } "
+"UI experiment: JSX-inspired es6 tagged template string function: hyperx. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler. Here's the virtual-dom/main-loop example: var vdom = require('virtual-dom') var hyperx = require('hyperx') var hx = hyperx(vdom.h) var main = require('main-loop') var loop = main({ times: 0 }, render, vdom) document.querySelector('#content').appendChild(loop.target) function render (state) {   return hx`&lt;div&gt;     &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;     &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;   &lt;/div&gt;`   function onclick () {     loop.update({ times: state.times + 1 })   } } ",
+"#feedback I'm finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn't visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. ",
 ]
 
 
@@ -115,7 +132,8 @@ var tests = [
   'message with image',
   'message with "@" mentions',
   'message with emoji',
-  'message with inline html in code block'
+  'message with inline html in code block',
+  'message with hashtag'
 ]
 
 var tape = require('tape')
@@ -147,6 +165,8 @@ tests.forEach(function (e, i) {
         return '#/msg/'+encodeURIComponent(ref)
       else if (ssbref.isBlobId(ref))
         return '/'+encodeURIComponent(ref)
+      else if (ref && ref[0] === '#')
+        return '#/channel/'+encodeURIComponent(ref.substr(1))
       return ''
     }
 
