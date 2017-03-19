@@ -15,13 +15,17 @@ standard markdown.
 var md = require('ssb-markdown')
 ```
 
-### md.block(source, { toUrl: })
+### md.block(source, { toUrl:, imageLink: })
 
 Render raw markdown `source` to html.
 The output will be html content without a surrounding tag.
 
 `toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string, and whether it is for an image or not,
 and returns a url string.
+
+
+`imageLink` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) and will be used to generate links to wrap any images.
+
 
 ### md.inline (source)
 

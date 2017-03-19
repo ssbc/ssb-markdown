@@ -1,7 +1,7 @@
 {
   "name": "ssb-markdown",
   "description": "patchwork's markdown parser",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "homepage": "https://github.com/ssbc/ssb-markdown",
   "repository": {
     "type": "git",
@@ -20,5 +20,12 @@
     "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
+  "maintainers": [
+    "pfraze",
+    "dominictarr",
+    "mixmix"
+  ],
   "license": "MIT"
 }
+
+
