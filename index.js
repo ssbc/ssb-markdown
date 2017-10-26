@@ -13,13 +13,13 @@ blockRenderer.urltransform = function (url) {
   var hasSigil = (c === '@' || c === '&' || c === '%' || c === '#')
 
   if (this.options.sanitize && !hasSigil) {
-    // sanitize - only allow ssb refs or http/s links
+    // sanitize - only allow ssb refs or external links
     try {
       var prot = decodeURIComponent(unescape(url.replace(/[^\w:]/g, ''))).toLowerCase();
     } catch (e) {
       return false;
     }
-    if (prot.indexOf('http:') !== 0 && prot.indexOf('https:') !== 0 && prot.indexOf('data:') !== 0) {
+    if (!isFullLink(this.options.protocols, prot)) {
       return false;
     }
   }
@@ -32,7 +32,7 @@ blockRenderer.urltransform = function (url) {
   return url
 }
 
-// override to make http/s links external
+// override to make http/s (or other specified protocol) links external
 blockRenderer.link = function(href, title, text) {
   href = this.urltransform(href)
   var out
@@ -46,8 +46,8 @@ blockRenderer.link = function(href, title, text) {
     out += ' title="' + title + '"';
   }
 
-  // make a popup if http/s
-  if (href && href.indexOf('http') === 0)
+  // make a popup if its a external link
+  if (href && isFullLink(this.options.protocols, href))
     out += ' target="_blank"'
 
   out += '>' + text + '</a>';
@@ -117,6 +117,7 @@ marked.setOptions({
   smartLists: true,
   smartypants: false,
   emoji: renderEmoji(16),
+  protocols: ['http','https','data'],
   renderer: blockRenderer
 })
 
@@ -145,6 +146,12 @@ function renderEmoji (size) {
         + ' class="emoji" align="absmiddle" height="'+size+'" width="'+size+'">'
       : ':' + emoji + ':'
     }
+}
+
+function isFullLink (protocols, href) {
+  protocols = protocols || []
+  href = href.split(':')[0]
+  return protocols.indexOf(href) !== -1;
 }
 
 
