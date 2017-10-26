@@ -102,8 +102,21 @@ var input = [
     "mentions": []
   },
   "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
+},
+{
+  "previous": "%bqmIrUnMn8YY7f34wfqgTbOLoBdrMlXcz4ZS0NTnT2w=.sha256",
+  "author": "@RmClT86x/o66QdW1dqAfj5Jek4qxUf8rtmvAlhZeZFg=.ed25519",
+  "sequence": "37",
+  "timestamp": 1489919632767,
+  "hash": "sha256",
+  "content": {
+    "type": "post",
+    "channel": "patchwork",
+    "text": "You can specify which type of protocols are converted into a link, such as [this dat link](dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639) and ignore [this magnet link](magnet://not-allowed-as-link)",
+    "mentions": []
+  },
+  "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
 }
-
 ]
 
 var output = [
@@ -112,7 +125,8 @@ var output = [
 '<p><a href="#/profile/%40hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE%3D.ed25519">@paul</a> <a href="#/profile/%40ye%2BQM09iPcDJD6YvQYjoQc7sLF%2FIFhmNbEqgdzQo3lQ%3D.ed25519">@mixmix</a> in the latest version there isn&#39;t anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn&#39;t realize who else is on that thread.</p>',
 '<p>If somebody&#39;s looking for a UI task to hack on, the <a href="https://github.com/ssbc/patchwork/issues/218" target="_blank">Expand threads in-place</a> is a moderate-sized item that I&#39;d love to get in. I&#39;m going to work on the social and onboarding bits now, so I won&#39;t be able to get to it for a bit.</p>\n<p>There will be <img src="./img/emoji/cake.png" alt=":cake:" title=":cake:" class="emoji" align="absmiddle" height="16" width="16"> and <img src="./img/emoji/cookie.png" alt=":cookie:" title=":cookie:" class="emoji" align="absmiddle" height="16" width="16">s and <img src="./img/emoji/heart.png" alt=":heart:" title=":heart:" class="emoji" align="absmiddle" height="16" width="16">s as a reward</p>',
 '<p>UI experiment: JSX-inspired es6 tagged template string function: <a href="https://github.com/substack/hyperx" target="_blank">hyperx</a>. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.</p>\n<p>Here&#39;s the virtual-dom/main-loop example:</p>\n<pre><code class="lang-js">var vdom = require(&#39;virtual-dom&#39;)\nvar hyperx = require(&#39;hyperx&#39;)\nvar hx = hyperx(vdom.h)\n\nvar main = require(&#39;main-loop&#39;)\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector(&#39;#content&#39;).appendChild(loop.target)\n\nfunction render (state) {\n  return hx`&lt;div&gt;\n    &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;\n    &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;\n  &lt;/div&gt;`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n</code></pre>',
-'<p><a href="#/channel/feedback">#feedback</a><br>I&#39;m finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn&#39;t visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. </p>'
+'<p><a href="#/channel/feedback">#feedback</a><br>I&#39;m finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn&#39;t visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. </p>',
+'<p>You can specify which type of protocols are converted into a link, such as <a href="dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639" target="_blank">this dat link</a> and ignore <a class="bad">this magnet link</a></p>',
 ]
 
 var outputInline = [
@@ -122,6 +136,7 @@ var outputInline = [
 "If somebody's looking for a UI task to hack on, the Expand threads in-place is a moderate-sized item that I'd love to get in. I'm going to work on the social and onboarding bits now, so I won't be able to get to it for a bit. There will be <img src=\"./img/emoji/cake.png\" alt=\":cake:\" title=\":cake:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\"> and <img src=\"./img/emoji/cookie.png\" alt=\":cookie:\" title=\":cookie:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s and <img src=\"./img/emoji/heart.png\" alt=\":heart:\" title=\":heart:\" class=\"emoji\" align=\"absmiddle\" height=\"12\" width=\"12\">s as a reward ",
 "UI experiment: JSX-inspired es6 tagged template string function: hyperx. Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler. Here's the virtual-dom/main-loop example: var vdom = require('virtual-dom') var hyperx = require('hyperx') var hx = hyperx(vdom.h) var main = require('main-loop') var loop = main({ times: 0 }, render, vdom) document.querySelector('#content').appendChild(loop.target) function render (state) {   return hx`&lt;div&gt;     &lt;h1&gt;clicked ${state.times} times&lt;/h1&gt;     &lt;button onclick=${onclick}&gt;click me!&lt;/button&gt;   &lt;/div&gt;`   function onclick () {     loop.update({ times: state.times + 1 })   } } ",
 "#feedback I'm finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn't visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. ",
+"You can specify which type of protocols are converted into a link, such as this dat link and ignore this magnet link"
 ]
 
 
@@ -133,7 +148,8 @@ var tests = [
   'message with "@" mentions',
   'message with emoji',
   'message with inline html in code block',
-  'message with hashtag'
+  'message with hashtag',
+  'message whit customs protocols'
 ]
 
 var tape = require('tape')
@@ -179,7 +195,8 @@ tests.forEach(function (e, i) {
         input[i].content.text,
         { 
           toUrl: toUrl,
-          imageLink: imageLink
+          imageLink: imageLink,
+          protocols: ['http','https','dat']
         }
       ).trim(),
       output[i].trim()
