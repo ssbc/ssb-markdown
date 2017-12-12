@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "emoji-named-characters": "^1.0.2",
-    "ssb-marked": "^0.7.0",
+    "ssb-marked": "^0.7.3",
     "ssb-msgs": "^5.2.0",
     "ssb-ref": "^2.3.0"
   },
