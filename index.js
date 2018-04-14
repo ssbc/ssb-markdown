@@ -62,9 +62,9 @@ blockRenderer.image  = function (href, title, text) {
       ? ' title="' + title + '"'
       : ''
 
-    if (url.includes('contentType=video')) {
+    if (text.startsWith('video:')) {
       return '<video controls src="'+url+'" alt="' + text + '"' + titleAttr + ' />'
-    } else if (url.includes('contentType=audio')) {
+    } else if (text.startsWith('audio:')) {
       return '<audio controls src="'+url+'" alt="' + text + '"' + titleAttr + ' />'
     } else {
       var hrefAttr = this.options.imageLink
