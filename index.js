@@ -58,14 +58,21 @@ blockRenderer.image  = function (href, title, text) {
   href = href.replace(/^&amp;/, '&')
   if (this.options.toUrl) {
     var url = this.options.toUrl(href, true)
-    var hrefAttr = this.options.imageLink
-      ? ' href="' + this.options.imageLink(href) + '"'
-      : ''
     var titleAttr = title
       ? ' title="' + title + '"'
       : ''
 
-    return '<a' + hrefAttr + '><img src="'+url+'" alt="' + text + '"' + titleAttr + '></a>'
+    if (text.startsWith('video:')) {
+      return '<video controls src="'+url+'" alt="' + text + '"' + titleAttr + ' />'
+    } else if (text.startsWith('audio:')) {
+      return '<audio controls src="'+url+'" alt="' + text + '"' + titleAttr + ' />'
+    } else {
+      var hrefAttr = this.options.imageLink
+        ? ' href="' + this.options.imageLink(href) + '"'
+        : ''
+
+      return '<a' + hrefAttr + '><img src="'+url+'" alt="' + text + '"' + titleAttr + '></a>'
+    }
   }
   return text
 }
