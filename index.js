@@ -10,10 +10,6 @@ exports.block = function (text, opts) {
       return '#' + ref
     },
     toUrl: function (ref, isImage) {
-      // @-mentions
-      if (ref in mentionNames)
-        return '#/profile/'+encodeURIComponent(mentionNames[ref])
-
       // standard ssb-refs
       if (ssbref.isFeedId(ref))
         return '#/profile/'+encodeURIComponent(ref)
@@ -69,14 +65,22 @@ exports.block = function (text, opts) {
 
   // image
   md.renderer.rules.image = (tokens, idx, options, env, self) => {
-    // XXX: doesnt support audio/video
     const token = tokens[idx]
 
-    const hash = token.attrs[0][1]
-    const src = opts.toUrl(hash, true)
-    const url = opts.imageLink(hash)
+    const text = token.attrs[0][1]
+    const alt = token.content
 
-    return `<a href="${url}"><img src="${src}" alt="${token.content}"></a>`
+    // XXX no support for `titleAttr`
+    if (text.indexOf(':') >= 0) {
+      const split = text.split(':')
+      const type = split[0]
+      const blobSrc = opts.toUrl(split[1], true)
+      return `<${type} controls src="${blobSrc}" alt="${alt}" />`
+    } else {
+      const url = opts.imageLink(text)
+      const src = opts.toUrl(text, true)
+      return `<a href="${url}"><img src="${src}" alt="${alt}"></a>`
+    }
   }
 
   return md.render('' + (text || ''))
@@ -115,3 +119,4 @@ exports.inline = function (text, opts) {
 
   return replaceNewlines(md.renderInline('' + (text || '')))
 }
+
