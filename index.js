@@ -69,16 +69,15 @@ exports.block = function (text, opts) {
 
     const text = token.attrs[0][1]
     const alt = token.content
+    const url = opts.imageLink(text)
+    const src = opts.toUrl(text, true)
 
     // XXX no support for `titleAttr`
-    if (text.indexOf(':') >= 0) {
-      const split = text.split(':')
-      const type = split[0]
-      const blobSrc = opts.toUrl(split[1], true)
-      return `<${type} controls src="${blobSrc}" alt="${alt}" />`
+    if (alt.startsWith('audio:')) {
+      return `<video controls src="${src}" alt="${alt}" />`
+    }  else if (alt.startsWith('video:')) {
+      return `<video controls src="${src}" alt="${alt}" />`
     } else {
-      const url = opts.imageLink(text)
-      const src = opts.toUrl(text, true)
       return `<a href="${url}"><img src="${src}" alt="${alt}"></a>`
     }
   }
@@ -119,4 +118,3 @@ exports.inline = function (text, opts) {
 
   return replaceNewlines(md.renderInline('' + (text || '')))
 }
-
