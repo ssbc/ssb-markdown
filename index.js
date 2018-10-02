@@ -1,21 +1,50 @@
 'use strict'
 const MarkdownIt = require('markdown-it')
+const ssbref = require('ssb-ref')
 
 const replaceNewlines = (text) => text.replace(/\n+(?!$)/g, ' ')
 
 exports.block = function (text, opts) {
+  const defaults = {
+    imageLink: function (ref) {
+      return '#' + ref
+    },
+    toUrl: function (ref, isImage) {
+      // @-mentions
+      if (ref in mentionNames)
+        return '#/profile/'+encodeURIComponent(mentionNames[ref])
+
+      // standard ssb-refs
+      if (ssbref.isFeedId(ref))
+        return '#/profile/'+encodeURIComponent(ref)
+      else if (ssbref.isMsgId(ref))
+        return '#/msg/'+encodeURIComponent(ref)
+      else if (ssbref.isBlobId(ref))
+        return '/'+encodeURIComponent(ref)
+      else if (ref && ref[0] === '#')
+        return '#/channel/'+encodeURIComponent(ref.substr(1))
+      return ''
+    },
+    protocols: ['http', 'https', 'dat']
+  }
+
+  opts = Object.assign({}, defaults, opts)
+
   // init
   const md = new MarkdownIt()
     .use(require('markdown-it-hashtag'))
     .use(require('markdown-it-emoji'))
 
-  // XXX: why are these links disallowed? is there a whitelist or blacklist?
-  md.linkify.add('magnet:', null)
+  // protocols
+  Object.values(opts.protocols).forEach(protocol =>
+    md.linkify.add(protocol + ':', 'http:')
+  )
 
   // hashtag
   md.renderer.rules.hashtag_open = function (tokens, idx) {
     var tagName = tokens[idx].content.toLowerCase()
-    return '<a href="#/channel/' + tagName + '">'
+    const url = opts.toUrl('#' + tagName)
+    return '<a href="' + url + '">'
   }
 
   // emoji
@@ -44,9 +73,10 @@ exports.block = function (text, opts) {
     const token = tokens[idx]
 
     const hash = token.attrs[0][1]
-    const encoded = encodeURIComponent(hash)
+    const src = opts.toUrl(hash, true)
+    const url = opts.imageLink(hash)
 
-    return `<a href="#${hash}"><img src="/${encoded}" alt="${token.content}"></a>`
+    return `<a href="${url}"><img src="${src}" alt="${token.content}"></a>`
   }
 
   return md.render('' + (text || ''))
