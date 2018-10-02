@@ -54,9 +54,10 @@ exports.block = function (text, opts) {
     return self.renderToken(tokens, idx, options)
   }
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-    if (tokens[idx].attrs[0][1].indexOf('not-allowed-as-link') >= 0) {
+    const href = tokens[idx].attrs[0][1]
+    if (href.indexOf('not-allowed-as-link') >= 0) {
       tokens[idx].attrs[0] = ['class', 'bad']
-    } else {
+    } else if (!href.startsWith('#')) {
       tokens[idx].attrPush(['target', '_blank'])
     }
 
