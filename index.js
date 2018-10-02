@@ -27,7 +27,7 @@ exports.block = function (text, opts) {
   opts = Object.assign({}, defaults, opts)
 
   // init
-  const md = new MarkdownIt()
+  const md = new MarkdownIt({ linkify: true })
     .use(require('markdown-it-hashtag'))
     .use(require('markdown-it-emoji'))
 
