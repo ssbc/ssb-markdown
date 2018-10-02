@@ -28,7 +28,7 @@ exports.block = function (text, opts) {
 
   // init
   const md = new MarkdownIt({ linkify: true })
-    .use(require('markdown-it-hashtag'), { hashtagRegExp: '[\\S+-]+' })
+    .use(require('markdown-it-hashtag'), { hashtagRegExp: '[\\w+-]+' })
     .use(require('markdown-it-emoji'))
 
   // protocols
