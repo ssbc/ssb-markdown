@@ -63,6 +63,28 @@ exports.block = function (text, opts) {
     return oldRender(tokens, idx, options, env, self)
   }
 
+  // sigils
+  ['@', '%', '&'].forEach(sigil => {
+    md.linkify.add(sigil, {
+      validate: function (text, pos, self) {
+        var tail = text.slice(pos);
+
+        if (!self.re.sigil) {
+          self.re.sigil = new RegExp(
+            '^([a-zA-Z0-9\/=]+\.[a-z0-9]+)'
+          );
+        }
+        if (self.re.sigil.test(tail)) {
+          return tail.match(self.re.sigil)[0].length;
+        }
+        return 0;
+      },
+      normalize: function (match) {
+        match.url = opts.toUrl(match.raw)
+      }
+    });
+  })
+
   // image
   md.renderer.rules.image = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
