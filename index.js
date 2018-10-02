@@ -32,9 +32,11 @@ exports.block = function (text, opts) {
     .use(require('markdown-it-emoji'))
 
   // protocols
-  Object.values(opts.protocols).forEach(protocol =>
-    md.linkify.add(protocol + ':', 'http:')
-  )
+  const defaultProtocols = ['http', 'https', 'ftp']
+  Object.values(opts.protocols).forEach(protocol => {
+    if (!defaultProtocols.includes(protocol))
+      md.linkify.add(protocol + ':', 'http:')
+  })
 
   // hashtag
   md.renderer.rules.hashtag_open = function (tokens, idx) {
