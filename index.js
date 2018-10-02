@@ -72,7 +72,7 @@ exports.block = function (text, opts) {
 
         if (!self.re.sigil) {
           self.re.sigil = new RegExp(
-            '^([a-zA-Z0-9\/=]+\.[a-z0-9]+)'
+            '^([a-zA-Z0-9\/=]{44}\.[a-z0-9]+)'
           );
         }
         if (self.re.sigil.test(tail)) {
@@ -141,3 +141,4 @@ exports.inline = function (text, opts) {
 
   return replaceNewlines(md.renderInline('' + (text || '')))
 }
+
