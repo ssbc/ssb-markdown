@@ -1,50 +1,12 @@
 'use strict'
 const MarkdownIt = require('markdown-it')
-const ssbref = require('ssb-ref')
 
 const replaceNewlines = (text) => text.replace(/\n+(?!$)/g, ' ')
 
 const defaults = {
-  imageLink: function (ref) {
-    return '#' + ref
-  },
-  toUrl: function (ref) {
-    // standard ssb-refs
-    if (ssbref.isFeedId(ref)) {
-      return '#/profile/' + encodeURIComponent(ref)
-    } else if (ssbref.isMsgId(ref)) {
-      return '#/msg/' + encodeURIComponent(ref)
-    } else if (ssbref.isBlobId(ref)) {
-      return '/' + encodeURIComponent(ref)
-    } else if (ref && ref[0] === '#') {
-      return '#/channel/' + encodeURIComponent(ref.substr(1))
-    }
-    return ''
-  },
-  protocols: ['http', 'https', 'ftp'],
-  emoji: (emoji, size) => {
-    size = size || 16
-    const image = {
-      src: `./img/emoji/${emoji}.png`,
-      alt: `:${emoji}:`,
-      title: `:${emoji}:`,
-      class: 'emoji',
-      align: 'absmiddle',
-      height: size,
-      width: size
-    }
-
-    let string = '<img'
-
-    Object.keys(image).forEach(key => {
-      const value = image[key]
-      string += ` ${key}="${value}"`
-    })
-
-    string += '>'
-
-    return string
-  }
+  imageLink: ref => ref,
+  toUrl: ref => ref,
+  protocols: []
 }
 
 exports.block = function (text, opts) {
@@ -73,9 +35,11 @@ exports.block = function (text, opts) {
   }
 
   // emoji
-  md.renderer.rules.emoji = function (token, idx) {
-    const emoji = token[idx].markup
-    return config.emoji(emoji, 16)
+  if (config.emoji) {
+    md.renderer.rules.emoji = function (token, idx) {
+      const emoji = token[idx].markup
+      return config.emoji(emoji)
+    }
   }
 
   // links
@@ -134,6 +98,7 @@ exports.block = function (text, opts) {
     } else if (alt.startsWith('video:')) {
       return `<video controls src="${src}" alt="${alt}" />`
     } else {
+      // XXX: do all images need to be wrapped in links?
       return `<a href="${url}"><img src="${src}" alt="${alt}"></a>`
     }
   }
@@ -149,9 +114,11 @@ exports.inline = function (text, opts) {
     .use(require('markdown-it-emoji'))
 
   // emoji
-  md.renderer.rules.emoji = function (token, idx) {
-    const emoji = token[idx].markup
-    return config.emoji(emoji, 12)
+  if (config.emoji) {
+    md.renderer.rules.emoji = function (token, idx) {
+      const emoji = token[idx].markup
+      return config.emoji(emoji)
+    }
   }
 
   // links
@@ -160,8 +127,6 @@ exports.inline = function (text, opts) {
 
   // code
   md.renderer.rules.code_inline = (tokens, idx) => {
-    // XXX: had to change test to pass because of fenced code blocks with an
-    // embedded syntax name (like ```js and ``` js)
     return tokens[idx].content
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')

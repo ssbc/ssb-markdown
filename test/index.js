@@ -159,6 +159,29 @@ var mlib = require('ssb-msgs')
 
 //run tests over input and output for current defaults.
 
+var emoji = (size) => {
+  size = size || 16
+  return (emoji) => {
+    const image = {
+      src: `./img/emoji/${emoji}.png`,
+      alt: `:${emoji}:`,
+      title: `:${emoji}:`,
+      class: 'emoji',
+      align: 'absmiddle',
+      height: size,
+      width: size
+    }
+
+    let properties = ''
+    Object.keys(image).forEach(key => {
+      const value = image[key]
+      properties += ` ${key}="${value}"`
+    })
+
+    return `<img${properties}>`
+  }
+}
+
 tests.forEach(function (e, i) {
   tape(e, function (t) {
     // extract mention names
@@ -196,7 +219,8 @@ tests.forEach(function (e, i) {
         { 
           toUrl: toUrl,
           imageLink: imageLink,
-          protocols: ['http','https','dat']
+          protocols: ['http','https','dat'],
+          emoji: emoji(16)
         }
       ).trim(),
       output[i].trim()
@@ -205,7 +229,9 @@ tests.forEach(function (e, i) {
   })
   tape(e, function (t) {
     t.equal(
-      markdown.inline(input[i].content.text).trim(),
+      markdown.inline(input[i].content.text, {
+        emoji: emoji(12)
+      }).trim(),
       outputInline[i].trim()
     )
     t.end()
