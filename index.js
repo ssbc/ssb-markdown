@@ -88,18 +88,33 @@ exports.block = function (text, opts) {
     const token = tokens[idx]
 
     const text = token.attrs[0][1]
+    const title = token.attrs[1][1]
     const alt = token.content
     const url = config.imageLink(text)
     const src = config.toUrl(text, true)
 
-    // XXX no support for `titleAttr`
+    const media = {
+      src,
+      alt,
+      title
+    }
+
+    let properties = ''
+
+    Object.keys(media).forEach(key => {
+      const value = media[key]
+      if (value.length) {
+        properties += ` ${key}="${value}"`
+      }
+    })
+
     if (alt.startsWith('audio:')) {
-      return `<video controls src="${src}" alt="${alt}" />`
+      return `<video controls${properties}/>`
     } else if (alt.startsWith('video:')) {
-      return `<video controls src="${src}" alt="${alt}" />`
+      return `<video controls${properties}/>`
     } else {
       // XXX: do all images need to be wrapped in links?
-      return `<a href="${url}"><img src="${src}" alt="${alt}"></a>`
+      return `<a href="${url}"><img${properties}></a>`
     }
   }
 
