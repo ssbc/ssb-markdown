@@ -219,7 +219,6 @@ tests.forEach(function (e, i) {
         { 
           toUrl: toUrl,
           imageLink: imageLink,
-          protocols: ['http','https','dat'],
           emoji: emoji(16)
         }
       ).trim(),
