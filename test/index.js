@@ -1,7 +1,10 @@
+var tape = require('tape')
+var ssbref = require('ssb-ref')
+var mlib = require('ssb-msgs')
+
 var input = require('./input')
 var output = require('./output')
 var outputInline = require('./output-inline')
-
 var markdown = require('../')
 
 var tests = [
@@ -11,15 +14,10 @@ var tests = [
   'message with emoji',
   'message with inline html in code block',
   'message with hashtag',
-  'message whit customs protocols'
+  'message with customs protocols'
 ]
 
-var tape = require('tape')
-var ssbref = require('ssb-ref')
-var mlib = require('ssb-msgs')
-
-// run tests over input and output for current defaults.
-
+// behavior expected by current tests
 var emoji = (size) => {
   size = size || 16
   return (emoji) => {
@@ -43,6 +41,7 @@ var emoji = (size) => {
   }
 }
 
+// run tests over input and output for current defaults.
 tests.forEach(function (e, i) {
   tape(e, function (t) {
     // extract mention names
@@ -55,10 +54,20 @@ tests.forEach(function (e, i) {
     })
     var toUrl = function (ref, isImage) {
       // @-mentions
-      if (ref in mentionNames) { return '#/profile/' + encodeURIComponent(mentionNames[ref]) }
+      if (ref in mentionNames) {
+        return '#/profile/' + encodeURIComponent(mentionNames[ref])
+      }
 
       // standard ssb-refs
-      if (ssbref.isFeedId(ref)) { return '#/profile/' + encodeURIComponent(ref) } else if (ssbref.isMsgId(ref)) { return '#/msg/' + encodeURIComponent(ref) } else if (ssbref.isBlobId(ref)) { return '/' + encodeURIComponent(ref) } else if (ref && ref[0] === '#') { return '#/channel/' + encodeURIComponent(ref.substr(1)) }
+      if (ssbref.isFeedId(ref)) {
+        return '#/profile/' + encodeURIComponent(ref)
+      } else if (ssbref.isMsgId(ref)) {
+        return '#/msg/' + encodeURIComponent(ref)
+      } else if (ssbref.isBlobId(ref)) {
+        return '/' + encodeURIComponent(ref)
+      } else if (ref && ref[0] === '#') {
+        return '#/channel/' + encodeURIComponent(ref.substr(1))
+      }
       return ''
     }
 
