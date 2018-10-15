@@ -14,7 +14,8 @@ var tests = [
   'message with emoji',
   'message with inline html in code block',
   'message with hashtag',
-  'message with customs protocols'
+  'message with customs protocols',
+  'message with links, mentions, headers, and code'
 ]
 
 // behavior expected by current tests

@@ -113,5 +113,53 @@
       "mentions": []
     },
     "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
+  },
+  {
+    "previous": "%WirmfqMQk4qV4BKUfoiyleVvD2mbfrfsdUol2PeyAQg=.sha256",
+    "author": "@+oaWWDs8g73EZFUMfW37R/ULtFEjwKN/DczvdYihjbU=.ed25519",
+    "sequence": 6044,
+    "timestamp": 1539365423226,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "# Markdown mentions\n\nI've noticed that many (most?) SSB clients publish mentions as full Markdown links, but some seem to be publishing just `@name`. Does anyone know which clients are doing this? Patchwork and Patchbay publish full Markdown links like:\n\n```\n[@name](@GV2qQKe0Hzy1ArooeUqPlv2ZJOylWp/2k965SU0tZG4=)\n```\n\nHere are some examples of non-Markdown mentions:\n\n- %9J3eq3q7zEOevm53vr14kYit+hlaBDDKuHa9ez3kfII=.sha256\n- %gGeDKVMa2n7EUCfaD7EUHgftyL3v1iw0SIlvpguDYK4=.sha256\n- %tssMC94yquE/sZ/TMtVabNY+4sKVmLg4GVPj2Jd+3Ds=.sha256\n- %G5XnARfu2pxEZLURr/6WPkbo8CVzbt+QETPUR9+FdGQ=.sha256\n\n**Is this happening only in #manyverse and #patchfoo, or are there other clients doing the same thing?** These mentions only seem to work on simple alphanumeric names when using ssb-markdown, so I'm wondering whether it would be possible to link the feed when publishing rather than trying to do lookups in the Markdown renderer.\n\ncc: [@kas](@RuNxm8SRujPcJx6GjtTQHp6hprAFv5voEkcvoAkB8Pk=.ed25519) [@CustomDesigned](@iOyfRmje5LFAErH7M3faTLNMQUTXCnjECbLtniVJ478=.ed25519) [@cel](@f/6sQ6d2CMxRUhLpspgGIulDxDCwYD7DzFzPNr7u5AU=.ed25519) [@andrestaltz_phone](@+UMKhpbzXAII+2/7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0=.ed25519) ",
+      "channel": "ssb-clients",
+      "mentions": [
+        {
+          "link": "%9J3eq3q7zEOevm53vr14kYit+hlaBDDKuHa9ez3kfII=.sha256"
+        },
+        {
+          "link": "%gGeDKVMa2n7EUCfaD7EUHgftyL3v1iw0SIlvpguDYK4=.sha256"
+        },
+        {
+          "link": "%tssMC94yquE/sZ/TMtVabNY+4sKVmLg4GVPj2Jd+3Ds=.sha256"
+        },
+        {
+          "link": "%G5XnARfu2pxEZLURr/6WPkbo8CVzbt+QETPUR9+FdGQ=.sha256"
+        },
+        {
+          "link": "#manyverse"
+        },
+        {
+          "link": "#patchfoo"
+        },
+        {
+          "link": "@RuNxm8SRujPcJx6GjtTQHp6hprAFv5voEkcvoAkB8Pk=.ed25519",
+          "name": "kas"
+        },
+        {
+          "link": "@iOyfRmje5LFAErH7M3faTLNMQUTXCnjECbLtniVJ478=.ed25519",
+          "name": "CustomDesigned"
+        },
+        {
+          "link": "@f/6sQ6d2CMxRUhLpspgGIulDxDCwYD7DzFzPNr7u5AU=.ed25519",
+          "name": "cel"
+        },
+        {
+          "link": "@+UMKhpbzXAII+2/7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0=.ed25519",
+          "name": "andrestaltz_phone"
+        }
+      ]
+    }
   }
 ]
