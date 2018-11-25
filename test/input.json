@@ -1,0 +1,165 @@
+[
+  {
+    "previous": "%+blprDKtrFtH+Rul4ZN7tSUZv7xSCwsHs5Dze+hi0wY=.sha256",
+    "author": "@uikkwUQU4dcd/ZrHU7JstnkTgncxQB2A8PDLHV9wDAs=.ed25519",
+    "sequence": 177,
+    "timestamp": 1452296709277,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "i was hoping this would be [ultrabrowser](https://github.com/breach) but it hasn't turned out that great.  But image a good base would look something like [Surf](http://surf.suckless.org/)",
+      "root": "%FpyJIZY+0UdtalQ3FzvGLVOeima5v1w/aKOQolcmfrY=.sha256",
+      "branch": "%86tNewQHTTcQ/f1aHLs4aAlBpgo7T1ZENuPRnuiH31E=.sha256",
+      "channel": "patchwork-dev"
+    },
+    "signature": "jOUkNbBcZFadkqkBxs79sIc2zdUzOH2MYx7Px4Isy308eiSsG4vabKCW2RkOpWtevUownOKNXqGULSsYplFZDQ==.sig.ed25519"
+  },
+  {
+    "previous": "%Ioq0Te9I1IDBXgvFlEvdq3CYQuZcHPdfsA9CnXPm2d8=.sha256",
+    "author": "@uikkwUQU4dcd/ZrHU7JstnkTgncxQB2A8PDLHV9wDAs=.ed25519",
+    "sequence": 172,
+    "timestamp": 1452262929977,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "At Pidgon River nature preserve in Indiana\n![IMG_20160107_170558 (1).jpg](&RRELXJAxum631eq1ikj7+qngd3f6Dvz7eA1mZNHBPQ0=.sha256)",
+      "mentions": [
+        {
+          "link": "&RRELXJAxum631eq1ikj7+qngd3f6Dvz7eA1mZNHBPQ0=.sha256",
+          "name": "IMG_20160107_170558 (1).jpg",
+          "size": 3175065,
+          "type": "image/jpeg",
+          "width": 5312,
+          "height": 2988
+        }
+      ],
+      "channel": "nature"
+    },
+    "signature": "KYSLJ+ezILUUN3NGOmCBl1ctXgqNvP7Z67mIEWPDnyeCndZFSuafGUpIknW48I7o07WjrWRBi5strZZWCKFHAw==.sig.ed25519"
+  },
+  {
+    "previous": "%S4N3qwNI/Uaf2U8DgsBhyhRJ5A6H4KFEEuwP7XF0SSA=.sha256",
+    "author": "@EMovhfIrFk4NihAKnRNhrfRaqIhBv1Wj8pTxJNgvCCY=.ed25519",
+    "sequence": 482,
+    "timestamp": 1451900123101,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "@paul @mixmix in the latest version there isn't anyway to see who is on a thread until you see them reply. In previous versions the other recipients where in the reply form, but that is gone now. I can imagine some unfortunate things being said because someone doesn't realize who else is on that thread.",
+      "mentions": [
+        {
+          "link": "@hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE=.ed25519",
+          "name": "paul"
+        },
+        {
+          "link": "@ye+QM09iPcDJD6YvQYjoQc7sLF/IFhmNbEqgdzQo3lQ=.ed25519",
+          "name": "mixmix"
+        }
+      ],
+      "channel": "patchwork-design"
+    },
+    "signature": "33Vk5hGu1jtaoEyLx7xwv1EpqZGz3wU8OZfKcSa5X3jI1k+H8zYlE7ZyyBcfEdBB/CYsKOVS1nPcCwJB9wsJBA==.sig.ed25519"
+  },
+  {
+    "previous": "%9mklNzxeb2XoH22jVVP5CDQrCfkMgEChyVpGke/g1bc=.sha256",
+    "author": "@hxGxqPrplLjRG2vtjQL87abX4QKqeLgCwQpS730nNwE=.ed25519",
+    "sequence": 1974,
+    "timestamp": 1452284976299,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "If somebody's looking for a UI task to hack on, the [Expand threads in-place](https://github.com/ssbc/patchwork/issues/218) is a moderate-sized item that I'd love to get in. I'm going to work on the social and onboarding bits now, so I won't be able to get to it for a bit.\n\nThere will be :cake: and :cookie:s and :heart:s as a reward",
+      "channel": "patchwork-dev"
+    },
+    "signature": "3NSPu1MDxKTil1WqWWNcoD3f2IZlLpzy0kJY1UDf9EsOZ8IEsm1kC9kVzZCP3bxm1wmU66e0DSIneuGnlFNwAg==.sig.ed25519"
+  },
+  {
+    "previous": "%2Clc1DI+eGfyROos8lURqXmYiCGf9p1F+Xx2w+xFmfI=.sha256",
+    "author": "@vt8uK0++cpFioCCBeB3p3jdx4RIdQYJOL/imN1Hv0Wk=.ed25519",
+    "sequence": 238,
+    "timestamp": 1451738152178,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "UI experiment: JSX-inspired es6 tagged template string function: [hyperx](https://github.com/substack/hyperx). Inline HTML templates for multiple engines (hyperscript, virtual-dom, react) without a transpiler.\n\nHere's the virtual-dom/main-loop example:\n\n``` js\nvar vdom = require('virtual-dom')\nvar hyperx = require('hyperx')\nvar hx = hyperx(vdom.h)\n\nvar main = require('main-loop')\nvar loop = main({ times: 0 }, render, vdom)\ndocument.querySelector('#content').appendChild(loop.target)\n\nfunction render (state) {\n  return hx`<div>\n    <h1>clicked ${state.times} times</h1>\n    <button onclick=${onclick}>click me!</button>\n  </div>`\n\n  function onclick () {\n    loop.update({ times: state.times + 1 })\n  }\n}\n```",
+      "channel": "modules"
+    },
+    "signature": "GgS7QYd8iG1sXIGqyODUqvL6WenVrY8C5GUBf/xzVXrmZJBfHGfBglopJslFVsY7mQ4EA8Y4qh0haGS3xMjSCA==.sig.ed25519"
+  },
+  {
+    "previous": "%bqmIrUnMn8YY7f34wfqgTbOLoBdrMlXcz4ZS0NTnT2w=.sha256",
+    "author": "@a0nzjJG3fyWm+o2Z7vFQvGrgSdlbpX92nx/6DgbmP4Y=.ed25519",
+    "sequence": "37",
+    "timestamp": 1489919632767,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "channel": "patchwork",
+      "text": "#feedback\nI'm finding the amount of whitespace in the comments for each post to be a bit frustrating as I have to scroll for ages to get to the next post in my feed and it isn't visually obvious when the comments stop and the next post starts. Would love to see the padding dropped down on comments. ",
+      "mentions": []
+    },
+    "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
+  },
+  {
+    "previous": "%bqmIrUnMn8YY7f34wfqgTbOLoBdrMlXcz4ZS0NTnT2w=.sha256",
+    "author": "@RmClT86x/o66QdW1dqAfj5Jek4qxUf8rtmvAlhZeZFg=.ed25519",
+    "sequence": "37",
+    "timestamp": 1489919632767,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "channel": "patchwork",
+      "text": "You can specify which type of protocols are converted into a link, such as [this dat link](dat://778f8d955175c92e4ced5e4f5563f69bfec0c86cc6f670352c457943666fe639) and ignore [this magnet link](magnet://not-allowed-as-link)",
+      "mentions": []
+    },
+    "signature": "xXJHmKVlhoeEdKMPxJnA0zMmjc8LK6NvnJ8/1/t5gHLEdt5iq7zN88sFP0lcM9DGIbxjVhmcsMKj0LByOYoxDA==.sig.ed25519"
+  },
+  {
+    "previous": "%WirmfqMQk4qV4BKUfoiyleVvD2mbfrfsdUol2PeyAQg=.sha256",
+    "author": "@+oaWWDs8g73EZFUMfW37R/ULtFEjwKN/DczvdYihjbU=.ed25519",
+    "sequence": 6044,
+    "timestamp": 1539365423226,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "# Markdown mentions\n\nI've noticed that many (most?) SSB clients publish mentions as full Markdown links, but some seem to be publishing just `@name`. Does anyone know which clients are doing this? Patchwork and Patchbay publish full Markdown links like:\n\n```\n[@name](@GV2qQKe0Hzy1ArooeUqPlv2ZJOylWp/2k965SU0tZG4=)\n```\n\nHere are some examples of non-Markdown mentions:\n\n- %9J3eq3q7zEOevm53vr14kYit+hlaBDDKuHa9ez3kfII=.sha256\n- %gGeDKVMa2n7EUCfaD7EUHgftyL3v1iw0SIlvpguDYK4=.sha256\n- %tssMC94yquE/sZ/TMtVabNY+4sKVmLg4GVPj2Jd+3Ds=.sha256\n- %G5XnARfu2pxEZLURr/6WPkbo8CVzbt+QETPUR9+FdGQ=.sha256\n\n**Is this happening only in #manyverse and #patchfoo, or are there other clients doing the same thing?** These mentions only seem to work on simple alphanumeric names when using ssb-markdown, so I'm wondering whether it would be possible to link the feed when publishing rather than trying to do lookups in the Markdown renderer.\n\ncc: [@kas](@RuNxm8SRujPcJx6GjtTQHp6hprAFv5voEkcvoAkB8Pk=.ed25519) [@CustomDesigned](@iOyfRmje5LFAErH7M3faTLNMQUTXCnjECbLtniVJ478=.ed25519) [@cel](@f/6sQ6d2CMxRUhLpspgGIulDxDCwYD7DzFzPNr7u5AU=.ed25519) [@andrestaltz_phone](@+UMKhpbzXAII+2/7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0=.ed25519) ",
+      "channel": "ssb-clients",
+      "mentions": [
+        {
+          "link": "%9J3eq3q7zEOevm53vr14kYit+hlaBDDKuHa9ez3kfII=.sha256"
+        },
+        {
+          "link": "%gGeDKVMa2n7EUCfaD7EUHgftyL3v1iw0SIlvpguDYK4=.sha256"
+        },
+        {
+          "link": "%tssMC94yquE/sZ/TMtVabNY+4sKVmLg4GVPj2Jd+3Ds=.sha256"
+        },
+        {
+          "link": "%G5XnARfu2pxEZLURr/6WPkbo8CVzbt+QETPUR9+FdGQ=.sha256"
+        },
+        {
+          "link": "#manyverse"
+        },
+        {
+          "link": "#patchfoo"
+        },
+        {
+          "link": "@RuNxm8SRujPcJx6GjtTQHp6hprAFv5voEkcvoAkB8Pk=.ed25519",
+          "name": "kas"
+        },
+        {
+          "link": "@iOyfRmje5LFAErH7M3faTLNMQUTXCnjECbLtniVJ478=.ed25519",
+          "name": "CustomDesigned"
+        },
+        {
+          "link": "@f/6sQ6d2CMxRUhLpspgGIulDxDCwYD7DzFzPNr7u5AU=.ed25519",
+          "name": "cel"
+        },
+        {
+          "link": "@+UMKhpbzXAII+2/7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0=.ed25519",
+          "name": "andrestaltz_phone"
+        }
+      ]
+    }
+  }
+]
