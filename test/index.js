@@ -77,15 +77,12 @@ tests.forEach(function (e, i) {
     }
 
     t.equal(
-      markdown.block(
-        input[i].content.text,
-        {
-          toUrl: toUrl,
-          imageLink: imageLink,
-          emoji: emoji(16)
-        }
-      ).trim(),
-      output[i].trim()
+      markdown.block(input[i].content.text, {
+        toUrl: toUrl,
+        imageLink: imageLink,
+        emoji: emoji(16)
+      }),
+      output[i]
     )
     t.end()
   })
@@ -93,8 +90,8 @@ tests.forEach(function (e, i) {
     t.equal(
       markdown.inline(input[i].content.text, {
         emoji: emoji(12)
-      }).trim(),
-      outputInline[i].trim()
+      }),
+      outputInline[i]
     )
     t.end()
   })
