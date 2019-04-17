@@ -31,6 +31,16 @@ to a view rendered with `block`.
 An object containing custom markdown parsing function. `opts` are the
 same for both `md.block` and `md.inline`
 
+`toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string, and whether it is for an image or not,
+and returns a url string.
+
+
+`imageLink` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) and will be used to generate links to wrap any images.
+
+`emoji` is a function which accepts an emoji as markup and
+over-rides the default emoji rendering behavior.
+
+
 #### usage
 
 ```js
@@ -43,15 +53,6 @@ md.block(source, opts)
 
 md.inline(source, opts)
 ```
-
-`toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string, and whether it is for an image or not,
-and returns a url string.
-
-
-`imageLink` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) and will be used to generate links to wrap any images.
-
-`emoji` is a function which accepts an emoji as markup and
-over-rides the default emoji rendering behavior.
 
 ## License
 
