@@ -28,7 +28,7 @@ to a view rendered with `block`.
 
 ### opts
 
-An object containing custom markdown parsing function. `opts` are the
+An object containing custom markdown rendering functions. `opts` are the
 same for both `md.block` and `md.inline`
 
 `toUrl` is a function which accepts an [ssb-ref](https://github.com/ssbc/ssb-links) or @-mention string, and whether it is for an image or not,
@@ -45,10 +45,11 @@ over-rides the default emoji rendering behavior.
 
 ```js
 const opts = {
-  toUrl: ref => ref,
-  toImage: ref => ref,
-  emoji: emojiAsMarkup => doSomeParsing(emojiAsMarkup)
+  toUrl: ref => renderUrlRef(ref),
+  toImage: ref => renderImageRef(ref),
+  emoji: emojiAsMarkup => renderEmoji(emojiAsMarkup)
 }
+
 md.block(source, opts)
 
 md.inline(source, opts)
