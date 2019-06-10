@@ -74,6 +74,11 @@
     "signature": "3NSPu1MDxKTil1WqWWNcoD3f2IZlLpzy0kJY1UDf9EsOZ8IEsm1kC9kVzZCP3bxm1wmU66e0DSIneuGnlFNwAg==.sig.ed25519"
   },
   {
+    "content": {
+      "text": "hello :)"
+    }
+  },
+  {
     "previous": "%2Clc1DI+eGfyROos8lURqXmYiCGf9p1F+Xx2w+xFmfI=.sha256",
     "author": "@vt8uK0++cpFioCCBeB3p3jdx4RIdQYJOL/imN1Hv0Wk=.ed25519",
     "sequence": 238,

@@ -12,6 +12,7 @@ var tests = [
   'message with image',
   'message with "@" mentions',
   'message with emoji',
+  'message with ascii emoji',
   'message with inline html in code block',
   'message with hashtag',
   'message with customs protocols',
