@@ -11,7 +11,8 @@
     "highlight.js": "^9.13.1",
     "markdown-it": "^8.4.2",
     "markdown-it-emoji": "^1.4.0",
-    "markdown-it-hashtag": "^0.4.0"
+    "markdown-it-hashtag": "^0.4.0",
+    "node-emoji": "^1.10.0"
   },
   "devDependencies": {
     "ssb-msgs": "^5.2.0",
