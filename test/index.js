@@ -2,9 +2,9 @@ var tape = require('tape')
 var ssbref = require('ssb-ref')
 var mlib = require('ssb-msgs')
 
-var input = require('./input')
-var output = require('./output')
-var outputInline = require('./output-inline')
+var input = require('./input.json')
+var output = require('./output.json')
+var outputInline = require('./output-inline.json')
 var markdown = require('../')
 
 var tests = [
