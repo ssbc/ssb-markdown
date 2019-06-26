@@ -74,7 +74,7 @@ tests.forEach(function (e, i) {
       } else if (ref && ref[0] === '#') {
         return '#/channel/' + encodeURIComponent(ref.substr(1))
       }
-      return ref
+      return ''
     }
 
     var imageLink = function (ref) {
