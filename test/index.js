@@ -19,8 +19,8 @@ var tests = [
   'message with links, mentions, headers, and code',
   'message with both emoji and :shortcodes:',
   'message with compound emoji',
-  "message with node-emoji shortcodes",
-  "message with sigil links in proper Markdown"
+  'message with node-emoji shortcodes',
+  'message with sigil links in proper Markdown'
 ]
 
 // behavior expected by current tests
