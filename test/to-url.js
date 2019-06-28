@@ -23,7 +23,7 @@ tape('toUrl behaves with markdown link', function (t) {
 })
 
 tape('toUrl behaves with raw link', function (t) {
-  t.plan(2)
+  t.plan(3)
 
   var LINK = '%qcdW859vSp/bQCA8qiPsirrCrjlIUHeq80QRjhCKYvU=.sha256'
   const mdLink = 'hello: ' + LINK
