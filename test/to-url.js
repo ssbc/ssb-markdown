@@ -16,7 +16,7 @@ tape('toUrl behaves with markdown link', function (t) {
 
   t.equal(
     actual,
-    '<p><a href="/thread?id=' + LINK + '" target="_blank">link</a></p>\n'
+    '<p><a href="/thread?id=' + LINK + '">link</a></p>\n'
   )
 
   t.end()
@@ -35,7 +35,7 @@ tape('toUrl behaves with raw link', function (t) {
         return '/thread?id=' + LINK
       }
     }).trim(),
-    '<p>hello: <a href="/thread?id=' + LINK + '" target="_blank">' + LINK.substring(0, 6) + '...</a></p>'
+    '<p>hello: <a href="/thread?id=' + LINK + '">' + LINK.substring(0, 6) + '...</a></p>'
   )
   t.end()
 })
