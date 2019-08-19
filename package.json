@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "emoji-regex": "^8.0.0",
-    "hashtag-regex": "github:fraction/hashtag-regex#add-other-symbols",
+    "hashtag-regex": "github:fraction/hashtag-regex#requireable",
     "highlight.js": "^9.15.8",
     "markdown-it": "^8.4.2",
     "markdown-it-emoji": "^1.4.0",
