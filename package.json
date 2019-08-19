@@ -1,7 +1,7 @@
 {
   "name": "ssb-markdown",
   "description": "patchwork's markdown parser",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "homepage": "https://github.com/ssbc/ssb-markdown",
   "repository": {
     "type": "git",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "emoji-regex": "^8.0.0",
+    "hashtag-regex": "github:fraction/hashtag-regex#add-other-symbols",
     "highlight.js": "^9.15.8",
     "markdown-it": "^8.4.2",
     "markdown-it-emoji": "^1.4.0",
