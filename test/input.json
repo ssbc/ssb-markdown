@@ -181,5 +181,10 @@
     "content": {
       "text": ":robot: = :robot_face:"
     }
+  },
+  {
+    "content": {
+      "text": "[this link should pass through toUrl](@+UMKhpbzXAII+2/7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0=.ed25519)"
+    }
   }
 ]
