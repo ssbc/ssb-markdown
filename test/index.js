@@ -20,7 +20,8 @@ var tests = [
   'message with both emoji and :shortcodes:',
   'message with compound emoji',
   'message with node-emoji shortcodes',
-  'message with sigil links in proper Markdown'
+  'message with sigil links in proper Markdown',
+  'message with non-ASCII unicode hashtag'
 ]
 
 // behavior expected by current tests
