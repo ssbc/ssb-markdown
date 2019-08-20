@@ -52,7 +52,7 @@ tests.forEach(function (e, i) {
       } else if (ssbref.isBlobId(ref)) {
         return '/' + encodeURIComponent(ref)
       } else if (ref && ref[0] === '#') {
-        return '#/channel/' + encodeURIComponent(ref.substr(1))
+        return '#/channel/' + ref.substr(1)
       }
       return ''
     }

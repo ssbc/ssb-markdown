@@ -12,5 +12,5 @@
   "<p><span class=\"emoji\">👨🏾‍🎤</span></p>\n",
   "<p><span class=\"emoji\">🤖</span> = <span class=\"emoji\">🤖</span></p>\n",
   "<p><a href=\"#/profile/%40%2BUMKhpbzXAII%2B2%2F7ZlsgkJwIsxdfeFi36Z5Rk1gCfY0%3D.ed25519\">this link should pass through toUrl</a></p>\n",
-  "<p><a href=\"#/channel/%E8%BD%BB%E6%8B%BF%E8%BD%BB%E6%94%BE\">#轻拿轻放</a></p>\n"
+  "<p><a href=\"#/channel/轻拿轻放\">#轻拿轻放</a> <a href=\"#/channel/a-b+c\">#a-b+c</a>.d <a href=\"#/channel/%F0%9F%99%83\">#<span class=\"emoji\">🙃</span></a></p>\n"
 ]
