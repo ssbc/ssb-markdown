@@ -12,35 +12,20 @@ var tests = [
   'message with image',
   'message with "@" mentions',
   'message with emoji',
+  'message with ascii emoji',
   'message with inline html in code block',
   'message with hashtag',
   'message with customs protocols',
-  'message with links, mentions, headers, and code'
+  'message with links, mentions, headers, and code',
+  'message with both emoji and :shortcodes:',
+  'message with compound emoji',
+  'message with node-emoji shortcodes',
+  'message with sigil links in proper Markdown',
+  'message with non-ASCII unicode hashtag'
 ]
 
 // behavior expected by current tests
-var emoji = (size) => {
-  size = size || 16
-  return (emoji) => {
-    const image = {
-      src: `./img/emoji/${emoji}.png`,
-      alt: `:${emoji}:`,
-      title: `:${emoji}:`,
-      class: 'emoji',
-      align: 'absmiddle',
-      height: size,
-      width: size
-    }
-
-    let properties = ''
-    Object.keys(image).forEach(key => {
-      const value = image[key]
-      properties += ` ${key}="${value}"`
-    })
-
-    return `<img${properties}>`
-  }
-}
+var emoji = (emoji) => `<span class="emoji">${emoji}</span>`
 
 // run tests over input and output for current defaults.
 tests.forEach(function (e, i) {
@@ -67,7 +52,7 @@ tests.forEach(function (e, i) {
       } else if (ssbref.isBlobId(ref)) {
         return '/' + encodeURIComponent(ref)
       } else if (ref && ref[0] === '#') {
-        return '#/channel/' + encodeURIComponent(ref.substr(1))
+        return '#/channel/' + ref.substr(1)
       }
       return ''
     }
@@ -80,7 +65,7 @@ tests.forEach(function (e, i) {
       markdown.block(input[i].content.text, {
         toUrl: toUrl,
         imageLink: imageLink,
-        emoji: emoji(16)
+        emoji,
       }),
       output[i]
     )
@@ -89,7 +74,7 @@ tests.forEach(function (e, i) {
   tape(e, function (t) {
     t.equal(
       markdown.inline(input[i].content.text, {
-        emoji: emoji(12)
+        emoji,
       }),
       outputInline[i]
     )
