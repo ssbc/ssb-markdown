@@ -50,7 +50,7 @@ tape('toUrl falls back if return false', function (t) {
         return false
       } }
     ).trim(),
-    '<p>hello: <a href="http://example.com" target="_blank">http://example.com</a></p>'.trim()
+    '<p>hello: <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a></p>'.trim()
   )
   t.end()
 })
