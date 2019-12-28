@@ -45,10 +45,12 @@ tape('toUrl falls back if return false', function (t) {
   t.equal(
     markdown.block(
       'hello: ' + LINK,
-      { toUrl: function (url) {
-        t.equal(url, LINK)
-        return false
-      } }
+      {
+        toUrl: function (url) {
+          t.equal(url, LINK)
+          return false
+        }
+      }
     ).trim(),
     '<p>hello: <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a></p>'.trim()
   )

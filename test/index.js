@@ -65,7 +65,7 @@ tests.forEach(function (e, i) {
       markdown.block(input[i].content.text, {
         toUrl: toUrl,
         imageLink: imageLink,
-        emoji,
+        emoji
       }),
       output[i]
     )
@@ -74,7 +74,7 @@ tests.forEach(function (e, i) {
   tape(e, function (t) {
     t.equal(
       markdown.inline(input[i].content.text, {
-        emoji,
+        emoji
       }),
       outputInline[i]
     )
