@@ -21,7 +21,8 @@ var tests = [
   'message with compound emoji',
   'message with node-emoji shortcodes',
   'message with sigil links in proper Markdown',
-  'message with non-ASCII unicode hashtag'
+  'message with non-ASCII unicode hashtag',
+  'message with external image'
 ]
 
 // behavior expected by current tests
