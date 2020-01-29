@@ -46,7 +46,7 @@ over-rides the default emoji rendering behavior.
 ```js
 const opts = {
   toUrl: ref => renderUrlRef(ref),
-  toImage: ref => renderImageRef(ref),
+  imageLink: ref => renderImageRef(ref),
   emoji: emojiAsMarkup => renderEmoji(emojiAsMarkup)
 }
 
