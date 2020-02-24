@@ -13,5 +13,6 @@
   "<span class=\"emoji\">🤖</span> = <span class=\"emoji\">🤖</span>",
   "this link should pass through toUrl",
   "#轻拿轻放 #a-b+c.d #<span class=\"emoji\">🙃</span>",
-  ""
+  "",
+  "horizon.jpg"
 ]
