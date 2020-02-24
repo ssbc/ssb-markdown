@@ -22,7 +22,8 @@ var tests = [
   'message with node-emoji shortcodes',
   'message with sigil links in proper Markdown',
   'message with non-ASCII unicode hashtag',
-  'message with external image'
+  'message with external image',
+  'message with private image'
 ]
 
 // behavior expected by current tests
@@ -45,12 +46,14 @@ tests.forEach(function (e, i) {
         return '#/profile/' + encodeURIComponent(mentionNames[ref])
       }
 
+      const link = ssbref.parseLink(ref)
+
       // standard ssb-refs
       if (ssbref.isFeedId(ref)) {
         return '#/profile/' + encodeURIComponent(ref)
       } else if (ssbref.isMsgId(ref)) {
         return '#/msg/' + encodeURIComponent(ref)
-      } else if (ssbref.isBlobId(ref)) {
+      } else if (ssbref.isBlobId(link ? link.link : ref)) {
         return '/' + encodeURIComponent(ref)
       } else if (ref && ref[0] === '#') {
         return '#/channel/' + ref.substr(1)
