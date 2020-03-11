@@ -14,11 +14,11 @@
     "markdown-it": "^8.4.2",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-hashtag": "^0.4.0",
-    "node-emoji": "^1.10.0"
+    "node-emoji": "^1.10.0",
+    "ssb-ref": "^2.13.9"
   },
   "devDependencies": {
     "ssb-msgs": "^5.2.0",
-    "ssb-ref": "^2.13.9",
     "standard": "^12.0.1",
     "tape": "^4.10.2"
   },
