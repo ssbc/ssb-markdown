@@ -23,7 +23,8 @@ var tests = [
   'message with sigil links in proper Markdown',
   'message with non-ASCII unicode hashtag',
   'message with external image',
-  'message with private image'
+  'message with private image',
+  'message with %70 link'
 ]
 
 // behavior expected by current tests
