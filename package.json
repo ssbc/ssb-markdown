@@ -23,7 +23,7 @@
     "tape": "^4.13.2"
   },
   "scripts": {
-    "test": "set -e; for t in test/*.js; do node $t; done"
+    "test": "tape ./test"
   },
   "author": "Paul Frazee <pfrazee@gmail.com>",
   "maintainers": [
