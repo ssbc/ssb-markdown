@@ -24,7 +24,8 @@ var tests = [
   'message with non-ASCII unicode hashtag',
   'message with external image',
   'message with private image',
-  'message with %70 link'
+  'message with %70 link',
+  'image with a single emoji as description'
 ]
 
 // behavior expected by current tests
