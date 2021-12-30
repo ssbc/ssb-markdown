@@ -19,5 +19,6 @@
   "message with embedded audio file",
   "message with embedded video file",
   "message with three consecutive periods",
-  "message with four consecutive periods"
+  "message with four consecutive periods",
+  "message with raw @feed mention"
 ]
