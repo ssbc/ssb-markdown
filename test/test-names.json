@@ -1,0 +1,19 @@
+[
+  "message with link",
+  "message with image",
+  "message with '@' mentions",
+  "message with emoji",
+  "message with ascii emoji",
+  "message with inline html in code block",
+  "message with hashtag",
+  "message with customs protocols",
+  "message with links, mentions, headers, and code",
+  "message with both emoji and :shortcodes:",
+  "message with compound emoji",
+  "message with node-emoji shortcodes",
+  "message with sigil links in proper Markdown",
+  "message with non-ASCII unicode hashtag",
+  "message with external image",
+  "message with private image",
+  "message with %70 link"
+]
