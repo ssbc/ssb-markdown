@@ -16,5 +16,6 @@
   "message with external image",
   "message with private image",
   "message with %70 link",
-  "message with embedded audio file"
+  "message with embedded audio file",
+  "message with embedded video file"
 ]

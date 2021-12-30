@@ -239,5 +239,34 @@
       ]
     },
     "signature": "uuS90SXOx8/IsdKZrmoXa/dZohufvlq7L6XZ1it5nPkbqiU1wZB34jdKCuTYSY5qV+IU3uXxwR/2c20hY/KhDg==.sig.ed25519"
+  },
+  {
+    "previous": "%bUz0onjfLyMpi6jTGRPiwNlTAV5fJrXixM8nFELxdEI=.sha256",
+    "sequence": 4841,
+    "author": "@MRiJ+CvDnD9ZjqunY1oy6tsk0IdbMDC4Q3tTC8riS3s=.ed25519",
+    "timestamp": 1607110675693,
+    "hash": "sha256",
+    "content": {
+      "type": "post",
+      "text": "![video:snow.mp4](&P5CAmVEEbJxlCRjcYaxzuE5/FOZ/laDS5aOpTOm2MM0=.sha256)\n\n![video:snoooow.mp4](&v7GopcAhKSsjmkA+A/uf1w3sn10CLMR+eLhl6AWxMnM=.sha256)\n\nFirst birthday snow I've had since ~2012 or so. :)",
+      "mentions": [
+        {
+          "link": "&P5CAmVEEbJxlCRjcYaxzuE5/FOZ/laDS5aOpTOm2MM0=.sha256",
+          "name": "video:snow.mp4",
+          "type": "video/mp4",
+          "size": 4274338
+        },
+        {
+          "link": "&v7GopcAhKSsjmkA+A/uf1w3sn10CLMR+eLhl6AWxMnM=.sha256",
+          "name": "video:snoooow.mp4",
+          "type": "video/mp4",
+          "size": 2478775
+        },
+        {
+          "link": "#grenoble"
+        }
+      ]
+    },
+    "signature": "tPG2bZ7xVzz46SE3RgC8ir6Z2orIF40g0W88qUpvPQmAyOnOff3B0URHjvjUpkyFL2zp5Xdx+fAdbnv+6MLECQ==.sig.ed25519"
   }
 ]
