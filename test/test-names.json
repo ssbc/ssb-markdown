@@ -20,5 +20,7 @@
   "message with embedded video file",
   "message with three consecutive periods",
   "message with four consecutive periods",
-  "message with raw @feed mention"
+  "message with raw @feed mention",
+  "message with raw %message mention",
+  "message with raw &blob mention"
 ]
