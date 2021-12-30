@@ -17,5 +17,7 @@
   "message with private image",
   "message with %70 link",
   "message with embedded audio file",
-  "message with embedded video file"
+  "message with embedded video file",
+  "message with three consecutive periods",
+  "message with four consecutive periods"
 ]

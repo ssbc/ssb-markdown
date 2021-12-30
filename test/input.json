@@ -268,5 +268,15 @@
       ]
     },
     "signature": "tPG2bZ7xVzz46SE3RgC8ir6Z2orIF40g0W88qUpvPQmAyOnOff3B0URHjvjUpkyFL2zp5Xdx+fAdbnv+6MLECQ==.sig.ed25519"
+  },
+  {
+    "content": {
+      "text": "Hello... This is a text with three periods... twice."
+    }
+  },
+  {
+    "content": {
+      "text": "Hello.... This is a text with four periods.... twice."
+    }
   }
 ]
