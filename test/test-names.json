@@ -22,5 +22,6 @@
   "message with four consecutive periods",
   "message with raw @feed mention",
   "message with raw %message mention",
-  "message with raw &blob mention"
+  "message with raw &blob mention",
+  "message with feed id mangled with text"
 ]
