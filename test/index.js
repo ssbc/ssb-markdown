@@ -2,30 +2,12 @@ var tape = require('tape')
 var ssbref = require('ssb-ref')
 var mlib = require('ssb-msgs')
 
+var tests = require('./test-names')
 var input = require('./input')
 var output = require('./output')
 var outputInline = require('./output-inline')
 var markdown = require('../')
 
-var tests = [
-  'message with link',
-  'message with image',
-  'message with "@" mentions',
-  'message with emoji',
-  'message with ascii emoji',
-  'message with inline html in code block',
-  'message with hashtag',
-  'message with customs protocols',
-  'message with links, mentions, headers, and code',
-  'message with both emoji and :shortcodes:',
-  'message with compound emoji',
-  'message with node-emoji shortcodes',
-  'message with sigil links in proper Markdown',
-  'message with non-ASCII unicode hashtag',
-  'message with external image',
-  'message with private image',
-  'message with %70 link'
-]
 
 // behavior expected by current tests
 var emoji = (emoji) => `<span class="emoji">${emoji}</span>`
